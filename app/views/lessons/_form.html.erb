@@ -1,0 +1,27 @@
+<%= form_with(model: lesson) do |form| %>
+  <% if lesson.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+        <% lesson.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :lesson_date, style: "display: block" %>
+    <%= form.datetime_field :lesson_date %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select(:user_id, User.all.order(:name), :id, :name) %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
