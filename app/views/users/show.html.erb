@@ -1,7 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
-
+<div>
+  <% @lessons.each do |lesson| %>
+  <p>
+    <strong>Lesson date:</strong>
+    <%= link_to lesson.lesson_date.strftime('%d/%m/%Y'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')) %>
+  </p>
+    <%= lesson.lesson_date.strftime('%H:%M') %>
+  <% end %>
+</div>
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>

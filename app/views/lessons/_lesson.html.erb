@@ -1,13 +1,15 @@
-<div id="<%= dom_id lesson %>">
+<div class="lesson_info" data-lesson-path="<%= lesson_path(lesson) %>">
   <p>
     <strong>Lesson date:</strong>
-    <%= lesson.lesson_date %>
+      <%= link_to lesson.lesson_date.strftime('%d/%m/%Y'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button" %>
+  </p>
+  <p>
+  <strong>Lesson time:</strong>
+    <%= lesson.lesson_date.strftime('%H:%M') %>
   </p>
 
   <p>
     <strong>User:</strong>
-    <%= lesson.user.name %>
+    <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id), class: "button" %>
   </p>
-  
-
 </div>
