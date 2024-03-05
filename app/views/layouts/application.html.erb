@@ -9,8 +9,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <div class="container">
+      <button type="button">
+        <a href="<%= users_path %>">users</a></button>
+      <button type="button">
+        <a href="<%= lessons_path %>">lessons</a></button>
     <%= yield %>
+    </div>
+    <script src="/app/javascript/application.js"></script>
   </body>
 </html>

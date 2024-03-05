@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @lessons = Lesson.where(user_id: @user.id)
   end
 
   # GET /users/new

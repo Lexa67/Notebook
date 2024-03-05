@@ -1,10 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @lesson %>
-
 <div>
-  <%= link_to "Edit this lesson", edit_lesson_path(@lesson) %> |
-  <%= link_to "Back to lessons", lessons_path %>
-
-  <%= button_to "Destroy this lesson", @lesson, method: :delete %>
+  <% if @lessons.present? %>
+  <% @lessons.each do |lesson| %>
+    <strong>Date:</strong>
+      <%= lesson.lesson_date.strftime('%d/%m/%Y') %>
+    <strong>Time:</strong>
+      <%= lesson.lesson_date.strftime('%H:%M') %>
+    <p>
+      <strong>Name:</strong>
+      <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id) %>
+    </p>
+    <% end %>
+    <% else %>
+    <strong>Date:</strong>
+    <%= @lesson.lesson_date.strftime('%d/%m/%Y')%>
+    <strong>Time:</strong>
+    <%= @lesson.lesson_date.strftime('%H:%M') %>
+      <strong>Name:</strong>
+      <%= link_to "#{@lesson.user.name}", user_path(id: @lesson.user.id) %>
+<% end %>
 </div>

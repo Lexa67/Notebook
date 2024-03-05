@@ -56,11 +56,19 @@ class LessonsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def lessons_by_date
+    @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date])
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
-      @lesson = Lesson.find(params[:id])
+      if params[:id] == "by_date"
+        @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date])
+      else
+        @lesson = Lesson.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
