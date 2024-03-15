@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    @lessons = Lesson.where(user_id: @user.id)
+    @lessons = Lesson.where(user_id: @user.id).order(:lesson_date)
+    
   end
 
   # GET /users/new
@@ -68,4 +69,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :price)
     end
+
+   
 end

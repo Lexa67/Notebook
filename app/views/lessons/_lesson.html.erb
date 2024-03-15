@@ -1,15 +1,27 @@
-<div class="lesson_info" data-lesson-path="<%= lesson_path(lesson) %>">
-  <p>
-    <strong>Lesson date:</strong>
-      <%= link_to lesson.lesson_date.strftime('%d/%m/%Y'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button" %>
-  </p>
-  <p>
-  <strong>Lesson time:</strong>
-    <%= lesson.lesson_date.strftime('%H:%M') %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id), class: "button" %>
-  </p>
+<div class="container">
+  <div class="lesson_info" data-lesson-path="<%= lesson_path(lesson) %>">
+    <ul class="params_ul">
+      <li class="params_li">
+        <%= link_to lesson.lesson_date.strftime('%d/%m/%Y'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button" %>
+      </li>
+    
+      <li class="params_li">
+        <%= lesson.lesson_date.strftime('%H:%M') %>
+      </li>
+    
+      <li class="params_li">
+        <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id), class: "button" %>
+      </li>
+    
+      <li class="params_li">
+        <%=lesson.confirmed? ? "Проведен / " : "Не проведен / "%>
+        <%=lesson.paid? ? link_to("Оплачен", lessons_path(paid: true), class: "button") : link_to("Не оплачен", lessons_path(paid: false), class: "button") %>
+      </li>
+    </ul>
+  </div>
+  <%= button_to "Изменить статус", toggle_confirmed_lesson_path(lesson), method: :patch, class: "button_toggle_conf" %>
+  <%= button_to "Оплата", toggle_paid_lesson_path(lesson), method: :patch, class: "button_paid_conf" %>
 </div>
+  
+
+
