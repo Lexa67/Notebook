@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :lessons
+  resources :lessons do
+    patch 'toggle_paid', on: :member
+    patch 'toggle_confirmed', on: :member
+    collection do
+      get :filter_by_date # Новый маршрут для фильтрации уроков по дате
+    end
+  end
   resources :users
   get 'lessons/by_date', to: 'lessons#lessons_by_date', as: 'lessons_by_date'
 

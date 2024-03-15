@@ -10,13 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div class="container">
-      <button type="button">
-        <a href="<%= users_path %>">users</a></button>
-      <button type="button">
-        <a href="<%= lessons_path %>">lessons</a></button>
-    <%= yield %>
-    </div>
+      <header class="header">
+        <a class="header_button" href="<%= users_path %>"><h1>Ученики</h1></a>
+        <a class="header_button" href="<%= lessons_path %>"><h1>Уроки</h1></a>
+      </header>
+      <%= yield %>
     <script src="/app/javascript/application.js"></script>
   </body>
 </html>

@@ -1,7 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
 <div>
   <% if @lessons.present? %>
+  <h3>Список уроков по дате</h3>
   <% @lessons.each do |lesson| %>
     <strong>Date:</strong>
       <%= lesson.lesson_date.strftime('%d/%m/%Y') %>
@@ -12,12 +11,15 @@
       <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id) %>
     </p>
     <% end %>
-    <% else %>
+  <% else %>
     <strong>Date:</strong>
     <%= @lesson.lesson_date.strftime('%d/%m/%Y')%>
     <strong>Time:</strong>
     <%= @lesson.lesson_date.strftime('%H:%M') %>
-      <strong>Name:</strong>
-      <%= link_to "#{@lesson.user.name}", user_path(id: @lesson.user.id) %>
-<% end %>
+    <strong>Name:</strong>
+    <%= link_to "#{@lesson.user.name}", user_path(id: @lesson.user.id) %>
+    <strong>Status:</strong>
+    Lesson is <%=@lesson.paid? ? "paid" : "not paid" %>
+    <%= button_to "Toggle Paid", toggle_paid_lesson_path(@lesson), method: :patch, class: "btn btn-primary" %>
+    <% end %>
 </div>
