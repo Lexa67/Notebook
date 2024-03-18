@@ -1,29 +1,40 @@
-<h1 class="hero_title">Список уроков</h1>
+<h1 class="hero_title">List of lessons</h1>
+<div class="total-prices">
+  <div class="paid-price">
+    <strong> Paid lessons: </strong>
+    <span class="total-price"><%= @total_price %> UAH</span>
+  </div>
+  <%= link_to "New lesson", new_lesson_path, class: "button-new-lesson" %>
+  <div class="not-paid-price">
+    <strong> Not paid lessons: </strong>
+    <span class="total-not-price"><%= @not_paid_total_price %> UAH</span>
+  </div>
+</div>
+
 <form class="date_form">
   <%= form_with(url: lessons_path, method: :get) do |form| %>
   
-      <%= form.label :start_date, "Начальная дата", class: "form-label" %>
+      <%= form.label :start_date, "Start date", class: "form-label" %>
       <%= form.date_field :start_date, class: "form-control" %>
    
-      <%= form.label :end_date, "Конечная дата", class: "form-label" %>
+      <%= form.label :end_date, "End date", class: "form-label" %>
       <%= form.date_field :end_date, class: "form-control" %>
 
-      <%= form.label :user_id, "Ученик", class: "form-label" %>
-      <%= form.collection_select :user_id, User.all, :id, :name, { include_blank: true, prompt: "Все ученики"}, { class: "form-control" } %>
+      <%= form.label :user_id, "Student", class: "form-label" %>
+      <%= form.collection_select :user_id, User.all, :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
     
-      <%= form.submit "Отсеять уроки", class: "button_primary" %>
+      <%= form.submit "Filter lessons", class: "button_primary" %>
   
 <% end %>
 </form>
 <div class="lesson_table">
   <ul class="table_ul">
-      <li class="table_li">Дата</li>
-      <li class="table_li">Время</li>
-      <li class="table_li">Ученик</li>
-      <li class="table_li">Статус урока</li>
-      <li class="table_li"></li>
+      <li class="table_li">Date</li>
+      <li class="table_li">Time</li>
+      <li class="table_li">Student</li>
+      <li class="table_li">Lesson status</li>
+      <li class="table_li">Options</li>
   </ul>
-    
   <% @lessons.each do |lesson| %>
     <% if lesson.paid %>
       <div class="paid">
@@ -35,19 +46,7 @@
       </div>
     <% end %>
   <% end %>
-   
 </div>
-
-  <strong> Paid lessons </strong>
-    <p>
-    <%= @total_price %>
-    </p>
-  <strong> Not paid lessons </strong>
-    <p>
-    <%= @not_paid_total_price %>
-    </p>
-
-<%= link_to "New lesson", new_lesson_path %>
 
 
 
