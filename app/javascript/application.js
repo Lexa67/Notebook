@@ -21,3 +21,4 @@ document.addEventListener("DOMContentLoaded", function() {
     if (event.target.closest(".lesson_info .button")) {event.stopPropagation()};
     });
   });
+  

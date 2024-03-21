@@ -1,0 +1,52 @@
+.pagination {
+    display: flex;
+    width: 100%;
+    height: 43px;
+    gap: 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.281);
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    color: aqua;
+}
+
+.first, .prev, .page, .next, .last {
+    display: inline-block;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.first:hover, .prev:hover, .page:hover, .next:hover, .last:hover {
+    background-color: rgba(0, 0, 0, 0.363);
+    border-radius: 5px;
+    width: 5%;
+}
+
+.first a, .prev a, .page a, .next a, .last a {
+    text-decoration: none;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    color: aqua;
+    object-fit: cover;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.first a:hover, .prev a:hover, .page a:hover, .next a:hover, .last a:hover {
+    color: white;
+}
+
+.page.current {
+    text-align: center;
+    color: white;
+}
+  

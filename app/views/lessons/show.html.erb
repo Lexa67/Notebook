@@ -22,4 +22,8 @@
     Lesson is <%=@lesson.paid? ? "paid" : "not paid" %>
     <%= button_to "Toggle Paid", toggle_paid_lesson_path(@lesson), method: :patch, class: "btn btn-primary" %>
     <% end %>
+    <% unless params[:id] == "by_date" %>
+    <%= button_to 'Create Lesson for Next Week', create_next_lesson_lesson_path(lesson_id: @lesson.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+
 </div>
