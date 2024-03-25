@@ -29,6 +29,10 @@ gem "jbuilder"
 gem "font-awesome-rails"
 gem 'kaminari'
 
+gem 'jquery-rails'
+gem 'rails-ujs'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

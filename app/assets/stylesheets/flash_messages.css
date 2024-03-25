@@ -1,0 +1,59 @@
+.alert {
+    padding: 15px;
+    /* margin-bottom: 20px; */
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    animation-name: alert_message;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+  }
+  
+  .alert-notice {
+    color: #155724;
+    background-color: #9fffb68c;
+  }
+  
+  .alert-alert {
+    color: #721c24;
+    background-color: #fc717c;
+  }
+
+  @keyframes alert_message {
+    0% {
+      opacity: 1;
+      padding: 15px;
+      margin: 20px;
+      height: 100%;
+    }
+
+    80% {
+      opacity: 0.9;
+      padding: 15px;
+      margin: 20px;
+      height: 100%;
+
+    }
+
+    99% {
+      opacity: 0;
+      padding: 15px;
+      margin: 20px;
+      height: 100%;
+      font-size: 16px;
+
+    }
+
+    100% {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      border: none;
+      visibility: hidden;
+      pointer-events: none;
+      font-size: 0px;
+    }
+  }

@@ -1,29 +1,42 @@
-<div>
-  <% if @lessons.present? %>
-  <h3>Список уроков по дате</h3>
-  <% @lessons.each do |lesson| %>
-    <strong>Date:</strong>
-      <%= lesson.lesson_date.strftime('%d/%m/%Y') %>
-    <strong>Time:</strong>
-      <%= lesson.lesson_date.strftime('%H:%M') %>
-    <p>
-      <strong>Name:</strong>
-      <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id) %>
-    </p>
-    <% end %>
-  <% else %>
-    <strong>Date:</strong>
-    <%= @lesson.lesson_date.strftime('%d/%m/%Y')%>
-    <strong>Time:</strong>
-    <%= @lesson.lesson_date.strftime('%H:%M') %>
-    <strong>Name:</strong>
-    <%= link_to "#{@lesson.user.name}", user_path(id: @lesson.user.id) %>
-    <strong>Status:</strong>
-    Lesson is <%=@lesson.paid? ? "paid" : "not paid" %>
-    <%= button_to "Toggle Paid", toggle_paid_lesson_path(@lesson), method: :patch, class: "btn btn-primary" %>
-    <% end %>
-    <% unless params[:id] == "by_date" %>
-    <%= button_to 'Create Lesson for Next Week', create_next_lesson_lesson_path(lesson_id: @lesson.id), method: :post, class: 'btn btn-primary' %>
-    <% end %>
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
 
-</div>
+<% if @lessons.present? %>
+  <h2 class="hero_title" >List of lessons by date</h2>
+<div class="lesson_table">
+  <ul class="table_ul">
+      <li class="table_li">Date</li>
+      <li class="table_li">Time</li>
+      <li class="table_li">Student</li>
+      <li class="table_li">Lesson status</li>
+      <li class="table_li">Options</li>
+  </ul>
+  <% @lessons.each do |lesson| %>
+    <% if lesson.paid %>
+      <div class="paid">
+        <%= render lesson %>
+      </div>
+    <% else %>
+      <div class="not_paid">
+        <%= render lesson %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="one_lesson_container">
+    <% if @lesson.paid %>
+    <div class="paid">
+      <%= render partial: 'lessons/lesson', locals: { lesson: @lesson } %>
+    </div>
+  <% else %>
+    <div class="not_paid">
+      <%= render partial: 'lessons/lesson', locals: { lesson: @lesson } %>
+    </div>
+  <% end %>
+  </div>
+  <div class="one_lesson_edit_destroy">
+    <%= link_to 'Edit', edit_lesson_path(@lesson), class: "one_lesson_btn_edit", title: "Edit this lesson" %>
+    <%= button_to 'Delete', lesson_path(@lesson), method: :delete, class: "one_lesson_btn_destroy", title: "Delete this lesson" %>  
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="lesson_info" data-lesson-path="<%= lesson_path(lesson) %>">
+  <div class="lesson_info" data-lesson-path="<%= lesson_path(lesson) %>" title="Show this lesson">
     <% if lesson.not_started? && lesson.confirmed? %>
       <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
@@ -9,7 +9,7 @@
   <% end %>
       <ul class="params_ul">
       <li class="params_li">
-        <%= link_to lesson.lesson_date.strftime('%d/%m/%Y  %a'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button" %>
+        <%= link_to lesson.lesson_date.strftime('%d/%m/%Y  %a'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button", title: "Show all lessons for #{lesson.lesson_date.strftime('%d/%m')}" %>
       </li>
     
       <li class="params_li">
@@ -17,17 +17,17 @@
       </li>
     
       <li class="params_li">
-        <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id), class: "button" %>
+        <%= link_to "#{lesson.user.name}", user_path(id: lesson.user.id), class: "button", title: "Show all #{lesson.user.name}'s lessons" %>
       </li>
     
       <li class="params_li">
         <%=lesson.confirmed? ? "Confirmed / " : "Not confirmed / "%>
-        <%=lesson.paid? ? link_to("Paid", lessons_path(paid: true), class: "button") : link_to("Not paid", lessons_path(paid: false), class: "button") %>
+        <%=lesson.paid? ? link_to("Paid", lessons_path(paid: true), class: "button", title: "Show all paid lessons") : link_to("Not paid", lessons_path(paid: false), class: "button", title: "Show all unpaid lessons") %>
       </li>
     </ul>
   </div>
-  <%= button_to "Change status", toggle_confirmed_lesson_path(lesson), method: :patch, class: "button_toggle_conf"%>
-  <%= button_to "Payment", toggle_paid_lesson_path(lesson), method: :patch, class: "button_paid_conf" %>
+  <%= button_to "Change status", toggle_confirmed_lesson_path(lesson), method: :patch, class: "button_toggle_conf", title: "Click to confirm the lesson or cancel the current confirmation"%>
+  <%= button_to "Payment", toggle_paid_lesson_path(lesson), method: :patch, class: "button_paid_conf", title: "Click to confirm payment or cancel it" %>
 </div>
   
 

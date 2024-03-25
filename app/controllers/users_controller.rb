@@ -1,15 +1,29 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :total_price, only: [:show]
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   # GET /users/1 or /users/1.json
   def show
-    @lessons = Lesson.where(user_id: @user.id).order(:lesson_date)
-    
+    @lessons = Lesson.where(user_id: @user.id).order(lesson_date: :desc)
+    @lessons = @lessons.page(params[:page]).per(10)
+    @total_price = 0
+    @not_paid_total_price = 0
+
+    @lessons.each do |lesson|
+      if lesson.paid?
+        if lesson.not_started?
+          @total_price += lesson.user.price
+        end
+      else
+        if lesson.not_started?
+          @not_paid_total_price += lesson.user.price
+        end
+      end
+    end
   end
 
   # GET /users/new
@@ -24,38 +38,31 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:notice] = "User was successfully created."
+      redirect_to users_path
+    else
+      flash[:alert] = "Error: User could not be created."
+      redirect_to new_user_path
     end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      flash[:notice] = "User was successfully updated."
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = "Error: User could not be updated."
+      redirect_to user_url(@user)
     end
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if @user.destroy
+      flash[:notice] = "User was successfully deleted."
+      redirect_to users_url
     end
   end
 
@@ -68,7 +75,5 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :price)
-    end
-
-   
+    end  
 end

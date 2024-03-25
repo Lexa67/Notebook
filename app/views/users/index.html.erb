@@ -1,11 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
+<h1 class="hero_title">List of users</h1>
+<div class="btn_container">
+  <%= link_to "New student", new_user_path, class: "btn_user" %>
+</div>
+<div class="user_table">
+  <p>Name</p>
+  <p>Price</p>
+  <p>Options</p>
+</div>
+<div class="user_container">
   <% @users.each do |user| %>
     <%= render user %>
   <% end %>
 </div>
 
-<%= link_to "New user", new_user_path %>
