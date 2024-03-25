@@ -1,0 +1,44 @@
+.date_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-label {
+    display: flex;
+    color: aquamarine;
+}
+
+.form-control {
+    padding: 5px;
+    margin: auto 10px;
+    font-size: 16px;
+    border: 1px solid rgb(10, 136, 94);
+    border-radius: 8px;
+    background-color: darkcyan;
+    color: azure;
+    text-align: center;
+}
+
+.form_new_lesson {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.form_lesson_date, .form_lesson_user, .form_user_price {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form_lesson_user .form-control {
+    width: 226px;
+}
+
+.form_create_lesson {
+    display: flex;
+    justify-content: end;
+}

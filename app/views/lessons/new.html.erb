@@ -1,9 +1,7 @@
-<h1>New lesson</h1>
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
+<h1 class="hero_title">New lesson</h1>
 
 <%= render "form", lesson: @lesson %>
 
-<br>
-
-<div>
-  <%= link_to "Back to lessons", lessons_path %>
-</div>

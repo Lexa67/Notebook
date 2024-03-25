@@ -1,18 +1,47 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-<div>
-  <% @lessons.each do |lesson| %>
-  <p>
-    <strong>Lesson date:</strong>
-    <%= link_to lesson.lesson_date.strftime('%d/%m/%Y'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')) %>
-  </p>
-    <%= lesson.lesson_date.strftime('%H:%M') %>
-  <% end %>
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
+<div class="show_user_info_string">
+  <div class="user_info_string">
+    <div class="user_info"  title="Show all lessons for this student" data-user-path="<%= user_path(@user) %>">
+      <p class="user_info_user">
+          <%= @user.name %>
+      </p>
+      <p class="user_info_price">
+        <%= @user.price %>
+      </p>
+    </div>
+  </div>
 </div>
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div class="total-prices">
+  <div class="paid-price">
+    <strong> Paid lessons: </strong>
+    <span class="total-price" title="Amount for all past paid lessons"><%= @total_price %> UAH</span>
+  </div>
+  <%= link_to "New lesson", new_lesson_path, class: "button-new-lesson" %>
+  <div class="not-paid-price" title="Amount for all past unpaid lessons">
+    <strong> Not paid lessons: </strong>
+    <span class="total-not-price"><%= @not_paid_total_price %> UAH</span>
+  </div>
+</div>
+<div class="lesson_table">
+  <ul class="table_ul">
+      <li class="table_li">Date</li>
+      <li class="table_li">Time</li>
+      <li class="table_li">Student</li>
+      <li class="table_li">Lesson status</li>
+      <li class="table_li">Options</li>
+  </ul>
+  <% @lessons.each do |lesson| %>
+    <% if lesson.paid %>
+      <div class="paid">
+        <%= render partial: 'lessons/lesson', locals: { lesson: lesson } %>
+      </div>
+      <% else %>
+      <div class="not_paid">
+        <%= render partial: 'lessons/lesson', locals: { lesson: lesson } %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= paginate @lessons %>
 </div>

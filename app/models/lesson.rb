@@ -1,6 +1,9 @@
 class Lesson < ApplicationRecord
   belongs_to :user
   before_validation :set_defaults
+
+  validates :lesson_date, presence: true
+  validates :user_id, presence: true
   
   def not_started?
     current_time = Time.now

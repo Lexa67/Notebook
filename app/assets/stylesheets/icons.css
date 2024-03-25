@@ -1,0 +1,21 @@
+.icon_edit {
+    fill: yellow;
+    transition-duration: 0.3s;
+}
+
+.icon_edit:hover {
+    box-shadow: 0 0 35px rgb(255, 230, 0);
+    transform: scale(0.9);
+}
+
+.icon_trash {
+    fill: aqua  ;
+    margin-bottom: 3px;
+    transition-duration: 0.3s;
+
+}
+
+.icon_trash:hover {
+    fill: rgb(255, 30, 0);
+    transform: scale(0.9);
+}
