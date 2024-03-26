@@ -127,3 +127,22 @@
     width: 22px;
     height: 22px;
 }
+
+.homework {
+    display: flex;
+    width: 30%;
+    margin: 20px;
+    border: 1px solid aquamarine;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgb(65 135 131);
+    color: aqua;
+    white-space: pre-line;
+}
+
+.homework::before {
+    content: "Homework:";
+    margin-right: 5px;
+    color: aquamarine;
+}
+

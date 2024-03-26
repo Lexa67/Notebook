@@ -86,7 +86,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:lesson_date, :user_id)
+    params.require(:lesson).permit(:lesson_date, :user_id, :homework)
   end
 
   def days_until(original_date, next_date)

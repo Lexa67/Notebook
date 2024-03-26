@@ -34,6 +34,12 @@
     align-items: center;
 }
 
+.form_lesson_date ::placeholder{
+    color: aqua;
+    font-size: small;
+    opacity: 0.6;
+}
+
 .form_lesson_user .form-control {
     width: 226px;
 }
