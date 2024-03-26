@@ -10,6 +10,11 @@
     <%= form.collection_select :user_id, User.all, :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
   </div>
 
+  <div class="form_lesson_date">
+    <%= form.label :homework, style: "display: block",class: "form-label" %>
+    <%= form.text_area :homework, class: "form-control", placeholder: "This field is not required" %>
+  </div>
+
   <div class="form_create_lesson">
     <%= form.submit class: "button_primary" %>
   </div>

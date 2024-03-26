@@ -39,4 +39,9 @@
     <%= link_to 'Edit', edit_lesson_path(@lesson), class: "one_lesson_btn_edit", title: "Edit this lesson" %>
     <%= button_to 'Delete', lesson_path(@lesson), method: :delete, class: "one_lesson_btn_destroy", title: "Delete this lesson" %>  
   </div>
+  <% if @lesson.homework.present? %>
+    <div class="homework">
+      <span><%= @lesson.homework %></span>
+    </div>
+  <% end %>
 <% end %>
