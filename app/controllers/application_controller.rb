@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
   def total_price
     @lessons = Lesson.all
 
-    @lessons = @lessons.where(user_id: params[:user_id]) if params[:user_id].present?
+    @lessons = @lessons.where(student_id: params[:student_id]) if params[:student_id].present?
     @lessons = @lessons.where(lesson_date: Date.parse(params[:start_date])..Date.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
     @lessons = @lessons.where(paid: params[:paid]) if params[:paid].present?
 
@@ -16,13 +17,20 @@ class ApplicationController < ActionController::Base
     @lessons.each do |lesson|
       if lesson.paid?
         if lesson.not_started?
-        @total_price += lesson.user.price
+        @total_price += lesson.student.price
         end
       else
         if lesson.not_started?
-        @not_paid_total_price += lesson.user.price
+        @not_paid_total_price += lesson.student.price
         end
       end
     end
   end    
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+  
 end

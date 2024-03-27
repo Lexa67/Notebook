@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_lesson, only: %i[ show edit update destroy toggle_paid toggle_confirmed]
   before_action :total_price, only: [:index]
 
@@ -66,7 +67,7 @@ class LessonsController < ApplicationController
 
     next_week_date = next_week_date.advance(days: days_until(original_lesson.lesson_date, next_week_date))
 
-    new_lesson = Lesson.new(lesson_date: next_week_date.change(hour: original_lesson.lesson_date.hour, min: original_lesson.lesson_date.min), user_id: original_lesson.user_id)
+    new_lesson = Lesson.new(lesson_date: next_week_date.change(hour: original_lesson.lesson_date.hour, min: original_lesson.lesson_date.min), student_id: original_lesson.student_id)
 
     if new_lesson.save
       redirect_to new_lesson
@@ -86,7 +87,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:lesson_date, :user_id, :homework)
+    params.require(:lesson).permit(:lesson_date, :student_id, :homework)
   end
 
   def days_until(original_date, next_date)
