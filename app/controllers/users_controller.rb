@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :total_price, only: [:show]
+  # before_action :total_price, only: [:show]
   # GET /users or /users.json
   def index
     @users = User.all.order(:name)
@@ -13,17 +14,17 @@ class UsersController < ApplicationController
     @total_price = 0
     @not_paid_total_price = 0
 
-    @lessons.each do |lesson|
-      if lesson.paid?
-        if lesson.not_started?
-          @total_price += lesson.user.price
-        end
-      else
-        if lesson.not_started?
-          @not_paid_total_price += lesson.user.price
-        end
-      end
-    end
+    # @lessons.each do |lesson|
+    #   if lesson.paid?
+    #     if lesson.not_started?
+    #       @total_price += lesson.user.price
+    #     end
+    #   else
+    #     if lesson.not_started?
+    #       @not_paid_total_price += lesson.user.price
+    #     end
+    #   end
+    # end
   end
 
   # GET /users/new
@@ -74,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :price)
+      params.require(:user).permit(:name)
     end  
 end

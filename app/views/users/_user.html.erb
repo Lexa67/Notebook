@@ -1,10 +1,10 @@
 <div class="user_info_string">
-  <div class="user_info"  title="Show all lessons for this student" data-user-path="<%= user_path(user) %>">
+  <div class="user_info"  title="Show all students for this user" data-user-path="<%= students_path %>">
     <p class="user_info_user">
         <%= user.name %>
     </p>
-    <p class="user_info_price">
-      <%= user.price %>
+    <p class="user_info_email">
+      <%= user.email %>
     </p>
   </div>
   <div class="edit_destroy">

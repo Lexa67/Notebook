@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :students
+  devise_for :users
   resources :lessons do
     patch 'toggle_paid', on: :member
     patch 'toggle_confirmed', on: :member
