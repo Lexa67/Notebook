@@ -19,8 +19,8 @@
       <%= form.label :end_date, "End date", class: "form-label" %>
       <%= form.date_field :end_date, class: "form-control" %>
 
-      <%= form.label :user_id, "Student", class: "form-label" %>
-      <%= form.collection_select :user_id, User.all, :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
+      <%= form.label :student_id, "Student", class: "form-label" %>
+      <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
     
       <%= form.submit "Filter lessons", class: "button_primary" %>
   
@@ -29,9 +29,9 @@
 
 <div class="lesson_table">
   <ul class="table_ul">
-      <li class="table_li">Date</li>
-      <li class="table_li">Time</li>
-      <li class="table_li">Student</li>
-      <li class="table_li">Lesson status</li>
-      <li class="table_li">Options</li>
+    <li class="table_li">Date</li>
+    <li class="table_li">Time</li>
+    <li class="table_li">Student</li>
+    <li class="table_li">Lesson status</li>
+    <li class="table_li">Options</li>
   </ul>

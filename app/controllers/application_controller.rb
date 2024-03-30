@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  def after_sign_in_path_for(resource)
+    if resource.admin?
+      users_path
+    else resource.teacher?
+      lessons_path
+    end
+  end
+
   def total_price
-    @lessons = Lesson.all
+    @lessons = Lesson.where(student_id: current_user.students.ids)
 
     @lessons = @lessons.where(student_id: params[:student_id]) if params[:student_id].present?
     @lessons = @lessons.where(lesson_date: Date.parse(params[:start_date])..Date.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?

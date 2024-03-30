@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .form_lesson_date, .form_lesson_user, .form_user_price {
@@ -47,4 +48,10 @@
 .form_create_lesson {
     display: flex;
     justify-content: end;
+}
+
+.form_checkbox {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
 }

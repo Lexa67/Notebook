@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :roles
   resources :students
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :lessons do
     patch 'toggle_paid', on: :member
     patch 'toggle_confirmed', on: :member
