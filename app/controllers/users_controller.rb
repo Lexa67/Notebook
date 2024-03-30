@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   # before_action :total_price, only: [:show]
   # GET /users or /users.json
   def index
-    @users = User.all.order(:name)
+    if current_user.role == "admin"
+      @users = User.all.order(:name)
+    else
+      flash[:alert] = "You do not have access to this page!"
+        redirect_to root_path
+    end
   end
 
   # GET /users/1 or /users/1.json
@@ -75,6 +80,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :role)
     end  
 end

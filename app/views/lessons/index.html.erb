@@ -2,17 +2,16 @@
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
 <h1 class="hero_title">List of lessons</h1>
-<%= render partial: 'lessons/header_lesson' %>
-  <% @lessons.each do |lesson| %>
-    <% if lesson.paid %>
-      <div class="paid">
-        <%= render lesson %>
-      </div>
-    <% else %>
-      <div class="not_paid">
-        <%= render lesson %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render partial: 'lessons/header_lesson' %>
+    <% @lessons.each do |lesson| %>
+        <% if lesson.paid %>
+          <div class="paid">
+            <%= render lesson %>
+          </div>
+        <% else %>
+          <div class="not_paid">
+            <%= render lesson %>
+          </div>
+        <% end %>
+      <% end %>
   <%= paginate @lessons %>
-</div>

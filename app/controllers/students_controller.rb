@@ -1,9 +1,16 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_student, only: %i[ show edit update destroy ]
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    if current_user.role == "admin" && params[:user_id].present?
+      @students = Student.where(user_id: params[:user_id])
+    elsif current_user.role == "teacher"
+      @students = Student.where(user_id: current_user.id)
+    else
+      @students = Student.all
+    end
   end
 
   # GET /students/1 or /students/1.json
@@ -22,6 +29,7 @@ class StudentsController < ApplicationController
   # POST /students or /students.json
   def create
     @student = Student.new(student_params)
+    @student.user_id = current_user.id
 
     respond_to do |format|
       if @student.save

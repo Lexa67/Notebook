@@ -1,5 +1,5 @@
 <div class="user_info_string">
-  <div class="user_info"  title="Show all students for this user" data-user-path="<%= students_path %>">
+  <div class="user_info"  title="Show all students for this user" data-user-path="<%= students_path(user_id: user.id)%>">
     <p class="user_info_user">
         <%= user.name %>
     </p>
