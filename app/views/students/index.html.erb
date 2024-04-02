@@ -1,12 +1,22 @@
-<h1>Students</h1>
-
-<div id="students">
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
+<h1 class="hero_title">List of students</h1>
+<% if current_user.role == "teacher" %>
+  <div class="btn_container">
+    <%= link_to "New student", new_student_path, class: "btn_user" %>
+  </div>
+<% end %>
+<div class="user_table">
+  <p>Name</p>
+  <% if current_user.role == "admin" %>
+    <p>Teacher</p>
+  <% end %>
+  <p>Price</p>
+  <p>Options</p>
+</div>
+<div class="user_container">
   <% @students.each do |student| %>
     <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New student", new_student_path %>

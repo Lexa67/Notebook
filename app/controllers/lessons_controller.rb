@@ -76,6 +76,10 @@ class LessonsController < ApplicationController
     end
   end
 
+  def homework
+    @lessons = Lesson.where(student_id: params[:student_id]).order(lesson_date: :desc)
+  end
+
   private
   
   def set_lesson

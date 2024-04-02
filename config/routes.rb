@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :lessons do
     patch 'toggle_paid', on: :member
     patch 'toggle_confirmed', on: :member
+    get 'homework', on: :member
     collection do
-      get :filter_by_date # Новый маршрут для фильтрации уроков по дате
+      get :filter_by_date
     end
     post :create_next_lesson, on: :member
   end

@@ -1,10 +1,39 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @student %>
-
-<div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
-  <%= link_to "Back to students", students_path %>
-
-  <%= button_to "Destroy this student", @student, method: :delete %>
+<% flash.each do |type, message| %>
+  <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
+<% end %>
+<div class="show_student_info">
+  <%= render @student %>
 </div>
+<div class="total-prices">
+  <div class="paid-price">
+    <strong> Paid lessons: </strong>
+    <span class="total-price" title="Amount for all past paid lessons"><%= @total_price %> UAH</span>
+  </div>
+  <%= link_to "New lesson", new_lesson_path, class: "button-new-lesson" %>
+  <div class="not-paid-price" title="Amount for all past unpaid lessons">
+    <strong> Not paid lessons: </strong>
+    <span class="total-not-price"><%= @not_paid_total_price %> UAH</span>
+  </div>
+</div>
+<div class="lesson_table">
+  <ul class="table_ul">
+      <li class="table_li">Date</li>
+      <li class="table_li">Time</li>
+      <li class="table_li">Student</li>
+      <li class="table_li">Lesson status</li>
+      <li class="table_li">Options</li>
+  </ul>
+  <% @lessons.each do |lesson| %>
+    <% if lesson.paid %>
+      <div class="paid">
+        <%= render partial: 'lessons/lesson', locals: { lesson: lesson } %>
+      </div>
+      <% else %>
+      <div class="not_paid">
+        <%= render partial: 'lessons/lesson', locals: { lesson: lesson } %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= paginate @lessons %>
+</div>
+

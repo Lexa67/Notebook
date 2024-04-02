@@ -1,0 +1,15 @@
+<h2 class="hero_title">All homeworks for <%=@lessons.first.student.name%></h2>
+<div class="homework_table">
+    <div class="homework_date">Date</div>
+    <div class="homework_homework">Homework</div>
+    <div class="libero"></div>
+</div>
+<% @lessons.each do |lesson| %>
+    <div class="homework_table_body">
+        <div class="homework_date"><%= link_to lesson.lesson_date.strftime('%d-%m-%Y  %a'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button", title: "Show all lessons for #{lesson.lesson_date.strftime('%d/%m')}" %></div>
+        <div class="homework_info"><%= lesson.homework %></div>
+        <div class="homework_show_btn">
+            <%= link_to "Show", lesson_path(lesson), class: "show_btn", title: "Show this lesson" %>
+        </div>
+    </div>
+<% end %>

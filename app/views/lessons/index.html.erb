@@ -3,6 +3,9 @@
 <% end %>
 <h1 class="hero_title">List of lessons</h1>
   <%= render partial: 'lessons/header_lesson' %>
+    <% if current_user.role == "admin" %>
+      <p class="user_table">This information can only be viewed by teachers</p>
+    <% end %>
     <% @lessons.each do |lesson| %>
         <% if lesson.paid %>
           <div class="paid">
