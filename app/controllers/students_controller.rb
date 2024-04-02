@@ -9,12 +9,28 @@ class StudentsController < ApplicationController
     elsif current_user.role == "teacher"
       @students = Student.where(user_id: current_user.id)
     else
-      @students = Student.all
+      @students = Student.all.order(:name)
     end
   end
 
   # GET /students/1 or /students/1.json
   def show
+    @lessons = Lesson.where(student_id: @student.id).order(lesson_date: :desc)
+    @lessons = @lessons.page(params[:page]).per(10)
+    @total_price = 0
+    @not_paid_total_price = 0
+
+    @lessons.each do |lesson|
+      if lesson.paid?
+        if lesson.not_started?
+          @total_price += lesson.student.price
+        end
+      else
+        if lesson.not_started?
+          @not_paid_total_price += lesson.student.price
+        end
+      end
+    end
   end
 
   # GET /students/new

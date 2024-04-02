@@ -20,7 +20,7 @@
         <% end %>
       </header>
       <div class="user_log_out">
-        <a class="user_name_btn" href="<%= edit_user_registration_path %>"><%= current_user.name %></a>
+        <a class="user_name_btn" href="<%= edit_user_registration_path %>" title="Edit email and password"><%= current_user.name %></a>
         <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "log_out_btn" %>
       </div>
     <% end %>

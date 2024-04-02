@@ -36,12 +36,21 @@
   <% end %>
   </div>
   <div class="one_lesson_edit_destroy">
+    <div class="week_btn">
+      <%= button_to 'Create Lesson for Next Week', create_next_lesson_lesson_path(lesson_id: @lesson.id), method: :post, class: "one_lesson_btn_edit" %>
+    </div>
     <%= link_to 'Edit', edit_lesson_path(@lesson), class: "one_lesson_btn_edit", title: "Edit this lesson" %>
     <%= button_to 'Delete', lesson_path(@lesson), method: :delete, class: "one_lesson_btn_destroy", title: "Delete this lesson" %>  
   </div>
   <% if @lesson.homework.present? %>
-    <div class="homework">
-      <span><%= @lesson.homework %></span>
+    <div class="one_homework_info">
+      <div class="homework">
+        <span><%= @lesson.homework %></span>
+      </div>
+      <div class="homework_btn">
+        <%= link_to "Show all homeworks", homework_lesson_path(student_id: @lesson.student.id), class:"show_all_homeworks_button" %>
+
+      </div>
     </div>
   <% end %>
 <% end %>
