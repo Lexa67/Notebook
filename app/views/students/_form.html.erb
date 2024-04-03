@@ -1,27 +1,17 @@
-<%= form_with(model: student) do |form| %>
-  <% if student.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+<div class="form_new_lesson">
+  <%= form_with(model: student) do |form| %>
+    <div class="form_lesson_date">
+      <%= form.label :name, style: "display: block", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
 
-      <ul>
-        <% student.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="form_lesson_date">
+      <%= form.label :price, style: "display: block", class: "form-label" %>
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
+
+    <div class="form_create_lesson">
+      <%= form.submit class: "button_primary" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

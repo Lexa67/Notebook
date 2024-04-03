@@ -7,7 +7,7 @@
 
   <div class="form_lesson_user">
     <%= form.label :student_id, style: "display: block", class: "form-label" %>
-    <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
+    <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { prompt: "All students"}, { class: "form-control" } %>
   </div>
 
   <div class="form_lesson_date">

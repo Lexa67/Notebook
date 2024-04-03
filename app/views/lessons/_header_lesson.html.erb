@@ -20,7 +20,11 @@
       <%= form.date_field :end_date, class: "form-control" %>
 
       <%= form.label :student_id, "Student", class: "form-label" %>
-      <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { include_blank: true, prompt: "All students"}, { class: "form-control" } %>
+      <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { prompt: "All students"}, { class: "form-control" } %>
+
+      <%= form.label :paid, "Payment state", class: "form-label" %>
+      <%= form.collection_select :paid, [[true, 'Paid'], [false, 'Not Paid']], :first, :last, { prompt: "All lessons" }, { class: "form-control" } %>
+
     
       <%= form.submit "Filter lessons", class: "button_primary" %>
   

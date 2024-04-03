@@ -199,7 +199,8 @@
     margin: 0 auto;
     justify-content: start;
     color: aqua;
-    width: 800px; 
+    width: 800px;
+    background-color: rgba(189, 189, 189, 0.11);
 }
 
 .homework_show_btn {
