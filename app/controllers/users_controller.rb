@@ -14,22 +14,6 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    @lessons = Lesson.where(user_id: @user.id).order(lesson_date: :desc)
-    @lessons = @lessons.page(params[:page]).per(10)
-    @total_price = 0
-    @not_paid_total_price = 0
-
-    # @lessons.each do |lesson|
-    #   if lesson.paid?
-    #     if lesson.not_started?
-    #       @total_price += lesson.user.price
-    #     end
-    #   else
-    #     if lesson.not_started?
-    #       @not_paid_total_price += lesson.user.price
-    #     end
-    #   end
-    # end
   end
 
   # GET /users/new

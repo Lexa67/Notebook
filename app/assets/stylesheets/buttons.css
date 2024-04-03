@@ -196,16 +196,18 @@ button {
     color: black;
     border: 1px solid black;
     box-shadow: 0 0 35px aqua;
-
 }
 
 .button {
     text-decoration: none;
     color: rgb(126, 248, 232);
+    height: 20px;
+    transition-duration: 0.1s;
 }
 
 .button:hover {
     color: white;
+    transform: scale(1.01);
 }
 
 .button_toggle_conf {
