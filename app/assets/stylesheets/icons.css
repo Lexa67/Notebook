@@ -1,21 +1,37 @@
-.icon_edit {
+.icon-check {
+    position: absolute;
+    translate: 0px 13px;
+    fill: aqua;
+    width: 20px;
+    height: 20px;
+}
+
+.icon-cross {
+    position: absolute;
+    translate: 0px 13px;
+    fill: red;
+    width: 22px;
+    height: 22px;
+}
+
+.icon-edit {
     fill: yellow;
     transition-duration: 0.3s;
 }
 
-.icon_edit:hover {
+.icon-edit:hover {
     box-shadow: 0 0 35px rgb(255, 230, 0);
     transform: scale(0.9);
 }
 
-.icon_trash {
+.icon-trash {
     fill: aqua  ;
     margin-bottom: 3px;
     transition-duration: 0.3s;
 
 }
 
-.icon_trash:hover {
+.icon-trash:hover {
     fill: rgb(255, 30, 0);
     transform: scale(0.9);
 }

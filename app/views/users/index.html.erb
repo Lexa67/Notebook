@@ -1,13 +1,13 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
-<h1 class="hero_title">List of users</h1>
-<div class="user_table">
+<h1 class="hero-title">List of users</h1>
+<div class="user-table">
   <p>Name</p>
   <p>Email</p>
   <p>Options</p>
 </div>
-<div class="user_container">
+<div class="user-container">
   <% @users.each do |user| %>
     <%= render user %>
   <% end %>

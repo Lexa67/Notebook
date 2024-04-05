@@ -1,22 +1,22 @@
-<div class="form_new_lesson">
+<div class="form-for-everything">
   <%= form_with(model: lesson) do |form| %>
-  <div class="form_lesson_date">
-    <%= form.label :lesson_date, style: "display: block", class: "form-label" %>
-    <%= form.datetime_field :lesson_date, class: "form-control" %>
+  <div class="form-for-input">
+    <%= form.label :lesson_date, style: "display: block", class: "form-my-label" %>
+    <%= form.datetime_field :lesson_date, class: "form-my-control" %>
   </div>
 
-  <div class="form_lesson_user">
-    <%= form.label :student_id, style: "display: block", class: "form-label" %>
-    <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { prompt: "All students"}, { class: "form-control" } %>
+  <div class="form-lesson-user">
+    <%= form.label :student_id, style: "display: block", class: "form-my-label" %>
+    <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { prompt: "All students"}, { class: "form-my-control" } %>
   </div>
 
-  <div class="form_lesson_date">
-    <%= form.label :homework, style: "display: block", class: "form-label" %>
-    <%= form.text_area :homework, class: "form-control", placeholder: "This field is not required" %>
+  <div class="form-for-input">
+    <%= form.label :homework, style: "display: block", class: "form-my-label" %>
+    <%= form.text_area :homework, class: "form-my-control", placeholder: "This field is not required" %>
   </div>
 
-  <div class="form_create_lesson">
-    <%= form.submit class: "button_primary" %>
+  <div class="form-submit-all">
+    <%= form.submit class: "button-primary" %>
   </div>
 </div>
 <% end %>

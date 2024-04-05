@@ -1,6 +1,6 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
-<h1 class="hero_title">Editing student</h1>
+<h1 class="hero-title">Editing student</h1>
 
 <%= render "form", student: @student %>

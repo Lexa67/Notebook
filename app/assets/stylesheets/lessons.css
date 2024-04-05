@@ -7,25 +7,7 @@
     margin: 5px 20px;
 }
 
-.paid-price {
-    font-size: 18px;
-}
-
-.total-price {
-    font-size: 20px;
-    color: green;
-}
-
-.not-paid-price {
-    font-size: 18px;
-}
-
-.total-not-price {
-    font-size: 20px;
-    color: red;
-}
-
-.lesson_table {
+.table-header {
     display: flex;
     flex-direction: column;
     margin: auto 20px;
@@ -35,28 +17,24 @@
     display: flex;
 }
 
-.one_lesson_container {
+.one-lesson-container {
     margin: 20px;
 }
 
-.one_lesson_edit_destroy {
+.one-lesson-edit-destroy {
     display: flex;
-    margin: auto 30px;
-    justify-content: center;
+    margin: auto 20px;
+    justify-content: start;
     gap: 20px;
 }
 
-.lesson_info {
+.lesson-info {
     width: 100%;
     padding-left: 45px;
 }
 
-.table_ul {
-    margin: auto 0 20px 0;
-    padding: 0;
+.table-ul {
     display: flex;
-    flex-grow: 1;
-    padding-left: 80px;
     margin-top: 10px;
     background-color: black;
     color: aqua;
@@ -64,30 +42,59 @@
     height: 40px;
     font-size: larger;
     line-height: 2;
+    padding: 0;
 }
 
-.params_ul {
+.params-ul {
     display: flex;
     padding: 0;
-    flex-direction: row;
+    text-align: center;
 }
 
-.table_li, .params_li {
+.params-li {
     list-style: none;
-    flex-direction: row;
     flex-grow: 1;
 }
 
-.table_li:last-child{
+.table-li-status, .table-li-date, .table-li-time, .table-li-student, .table-li-lesson-status, .table-li-options {
+    display: flex;
+    position: relative;
+}
+
+.table-li-status{
+    left: 30px;
+}
+
+.table-li-date {
+    left: 85px;
+}
+
+.table-li-time {
+    left: 290px;
+}
+
+.table-li-student {
+    left: 480px;
+}
+
+.table-li-lesson-status {
+    left: 620px;
+}
+
+.table-li-options {
+    left: 860px;
+}
+
+.params-li {
+    max-width: 240px;
+}
+
+.table-li:first-child{
+    width: 240px;
+}
+
+.table-li:last-child{
     max-width: 141px;
-}
-
-.params_li:last-child {
-    width: 110px;
-}
-
-.params_li:first-child {
-    width: 80px;
 }
 
 .paid {
@@ -99,7 +106,7 @@
     transition-duration: 0.3s;
 }
 
-.not_paid {
+.not-paid {
     background-color: rgb(31, 31, 31);
     box-shadow: inset 0 0 25px rgb(212, 0, 0);
     color: rgb(126, 248, 232);
@@ -108,31 +115,19 @@
     transition-duration: 0.3s;
 }
 
-.paid:hover, .not_paid:hover {
+.paid:hover, .not-paid:hover {
     transform: scale(1.02);
 }
 
-.icon-check {
-    position: absolute;
-    translate: -30px 13px;
-    fill: aqua;
-    width: 20px;
-    height: 20px;
+.day-of-week {
+    color: yellow;
 }
 
-.icon-cross {
-    position: absolute;
-    translate: -30px 13px;
-    fill: red;
-    width: 22px;
-    height: 22px;
-}
-
-.one_homework_info{
+.one-homework-info{
     display: flex;
 }
 
-.homework_btn{
+.homework-btn{
     display: flex;
     padding: 20px;
 }
@@ -140,7 +135,7 @@
 .homework {
     display: flex;
     width: 30%;
-    margin: 20px;
+    margin: 20px 0 20px 20px;
     border: 1px solid aquamarine;
     padding: 15px;
     border-radius: 10px;
@@ -155,7 +150,7 @@
     color: aquamarine;
 }
 
-.homework_table {
+.homework-table {
     display: flex;
     margin: 0 auto;
     justify-content: start;
@@ -165,7 +160,7 @@
     width: 800px;
 }
 
-.homework_date, .homework_homework{
+.homework-date, .homework-homework{
     display: flex;
     padding: 10px;
     justify-content: center;
@@ -173,11 +168,11 @@
     margin-left: 6px;
 }
 
-.homework_date {
+.homework-date {
     width: 30%;
 }
 
-.homework_homework {
+.homework-homework {
     width: 100%;
 }
 
@@ -185,7 +180,7 @@
     width: 150px;
 }
 
-.homework_info {
+.homework-info {
     display: flex;
     padding: 10px;
     width: 100%;
@@ -194,7 +189,7 @@
     color: black;
 }
 
-.homework_table_body {
+.homework-table-body {
     display: flex;
     margin: 0 auto;
     justify-content: start;
@@ -203,7 +198,7 @@
     background-color: rgba(189, 189, 189, 0.11);
 }
 
-.homework_show_btn {
+.homework-show-btn {
     display: flex;
     border-bottom: 1px solid black;
     align-items: baseline;

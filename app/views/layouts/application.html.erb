@@ -12,16 +12,16 @@
   <body>
     <% if user_signed_in? %>
       <header class="header">
-        <a class="header_button" href="<%= students_path %>"><h1>Students</h1></a>
+        <a class="header-button" href="<%= students_path %>"><h1>Students</h1></a>
         <% if current_user.role == "admin" %>
-          <a class="header_button" href="<%= users_path %>"><h1>Teachers</h1></a>
+          <a class="header-button" href="<%= users_path %>"><h1>Teachers</h1></a>
         <% else %>
-          <a class="header_button" href="<%= lessons_path %>"><h1>Lessons</h1></a>
+          <a class="header-button" href="<%= lessons_path %>"><h1>Lessons</h1></a>
         <% end %>
       </header>
-      <div class="user_log_out">
-        <a class="user_name_btn" href="<%= edit_user_registration_path %>" title="Edit email and password"><%= current_user.name %></a>
-        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "log_out_btn" %>
+      <div class="header-menu">
+        <a class="user-name-btn" href="<%= edit_user_registration_path %>" title="Edit email and password"><%= current_user.name %></a>
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "log-out-btn" %>
       </div>
     <% end %>
       <%= yield %>

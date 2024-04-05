@@ -1,34 +1,34 @@
-<div class="devise_container">
-  <h1 class="hero_title notebook">Notebook</h1>
-  <div class="log_in_container">
-    <h2 class="hero_title">Log in</h2>
+<div class="devise-container">
+  <h1 class="hero-title notebook">Notebook</h1>
+  <div class="log-in-container">
+    <h2 class="hero-title">Log in</h2>
 
-    <div class="form_new_lesson">
+    <div class="form-for-everything">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form_lesson_date">
-        <%= f.label :email, class: "form-label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <div class="form-for-input">
+        <%= f.label :email, class: "form-my-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-my-control" %>
       </div>
 
-      <div class="form_lesson_date">
-        <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      <div class="form-for-input">
+        <%= f.label :password, class: "form-my-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-my-control" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
-        <div class="form_checkbox">
-          <%= f.check_box :remember_me, class: "form-control"%>
-          <%= f.label :remember_me, class: "form-label", style: "color: rgb(193 191 191)" %>
+        <div class="form-checkbox">
+          <%= f.check_box :remember_me, class: "form-my-control"%>
+          <%= f.label :remember_me, class: "form-my-label", style: "color: rgb(193 191 191)" %>
         </div>
       <% end %>
       
-      <div class="form_create_lesson">
-        <%= f.submit "Log in", class: "button_primary" %>
+      <div class="form-submit-all">
+        <%= f.submit "Log in", class: "button-primary" %>
       </div>
       <% end %>
     </div>
 
-    <div class="devise_footer">
+    <div class="devise-footer">
       <%= render "devise/shared/links" %>
     </div>
   </div>

@@ -1,21 +1,21 @@
-<div class="devise_container">
-  <div class="forgot_container">
-    <h2 class="hero_title">Forgot your password?</h2>
-    <div class="form_new_lesson">
+<div class="devise-container">
+  <div class="forgot-container">
+    <h2 class="hero-title">Forgot your password?</h2>
+    <div class="form-for-everything">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="form_lesson_date">
-          <%= f.label :email, class: "form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <div class="form-for-input">
+          <%= f.label :email, class: "form-my-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-my-control" %>
         </div>
 
-        <div class="form_create_lesson">
-          <%= f.submit "Send me reset password instructions", class: "button_primary" %>
+        <div class="form-submit-all">
+          <%= f.submit "Send me reset password instructions", class: "button-primary" %>
         </div>
       <% end %>
     </div>
-      <div class="devise_footer">
+      <div class="devise-footer">
         <%= render "devise/shared/links" %>
       </div>
   </div>

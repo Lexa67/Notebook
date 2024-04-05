@@ -19,20 +19,33 @@ body {
 
 .header{
     display: flex;
-    position: relative;
 }
 
-.hero_title {
+.hero-title {
     text-align: center;
     color: rgb(111, 224, 186);
     margin: 0 0 5px 0;
 }
 
-.user_log_out {
+.header-menu {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px 0 20px;
     border-bottom: 1px solid rgb(46 175 175);
+}
+
+.header-price {
+    font-size: 18px;
+}
+
+.total-paid {
+    font-size: 20px;
+    color: green;
+}
+
+.total-not-paid {
+    font-size: 20px;
+    color: red;
 }
 
 

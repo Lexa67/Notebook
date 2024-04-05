@@ -5,21 +5,21 @@ import "controllers"
 
 document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("click", function(event) {
-    if (event.target.closest(".lesson_info")) {
-      const lessonInfo = event.target.closest(".lesson_info");
+    if (event.target.closest(".lesson-info")) {
+      const lessonInfo = event.target.closest(".lesson-info");
       const lessonPath = lessonInfo.dataset.lessonPath;
       window.location.href = lessonPath;
     }
   });
   document.addEventListener("click", function(event) {
-      if (event.target.closest(".user_info")) {
-        const userInfo = event.target.closest(".user_info");
+      if (event.target.closest(".user-info")) {
+        const userInfo = event.target.closest(".user-info");
         const userPath = userInfo.dataset.userPath;
         window.location.href = userPath;
       }
     });
   document.addEventListener("click", function(event) {
-    if (event.target.closest(".lesson_info .button")) {event.stopPropagation()};
+    if (event.target.closest(".lesson-info .button")) {event.stopPropagation()};
     });
   });
   

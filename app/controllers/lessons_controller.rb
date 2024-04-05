@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
   before_action :total_price, only: [:index]
 
   def index
+  
   end
 
   def show

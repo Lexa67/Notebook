@@ -1,10 +1,10 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
-<h1 class="hero_title">List of lessons</h1>
+<h1 class="hero-title">List of lessons</h1>
   <%= render partial: 'lessons/header_lesson' %>
     <% if current_user.role == "admin" %>
-      <p class="user_table">This information can only be viewed by teachers</p>
+      <p class="user-table">This information can only be viewed by teachers</p>
     <% end %>
     <% @lessons.each do |lesson| %>
         <% if lesson.paid %>
@@ -12,7 +12,7 @@
             <%= render lesson %>
           </div>
         <% else %>
-          <div class="not_paid">
+          <div class="not-paid">
             <%= render lesson %>
           </div>
         <% end %>
