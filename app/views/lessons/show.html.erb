@@ -3,14 +3,15 @@
 <% end %>
 
 <% if @lessons.present? %>
-  <h2 class="hero_title" >List of lessons by date</h2>
-<div class="lesson_table">
-  <ul class="table_ul">
-      <li class="table_li">Date</li>
-      <li class="table_li">Time</li>
-      <li class="table_li">Student</li>
-      <li class="table_li">Lesson status</li>
-      <li class="table_li">Options</li>
+  <h2 class="hero-title" >List of lessons by date</h2>
+<div class="lesson-table">
+  <ul class="table-ul">
+    <li class="table-li-status" title="The status of the lesson that was completed. If there is no icon, then the lesson has not been completed yet.">Status</li>
+    <li class="table-li-date">Date</li>
+    <li class="table-li-time">Time</li>
+    <li class="table-li-student">Student</li>
+    <li class="table-li-lesson-status">Lesson status</li>
+    <li class="table-li-options">Options</li>
   </ul>
   <% @lessons.each do |lesson| %>
     <% if lesson.paid %>
@@ -18,37 +19,37 @@
         <%= render lesson %>
       </div>
     <% else %>
-      <div class="not_paid">
+      <div class="not-paid">
         <%= render lesson %>
       </div>
     <% end %>
   <% end %>
 <% else %>
-  <div class="one_lesson_container">
+  <div class="one-lesson-container">
     <% if @lesson.paid %>
     <div class="paid">
       <%= render partial: 'lessons/lesson', locals: { lesson: @lesson } %>
     </div>
   <% else %>
-    <div class="not_paid">
+    <div class="not-paid">
       <%= render partial: 'lessons/lesson', locals: { lesson: @lesson } %>
     </div>
   <% end %>
   </div>
-  <div class="one_lesson_edit_destroy">
-    <div class="week_btn">
-      <%= button_to 'Create Lesson for Next Week', create_next_lesson_lesson_path(lesson_id: @lesson.id), method: :post, class: "one_lesson_btn_edit" %>
+  <div class="one-lesson-edit-destroy">
+    <div class="week-btn">
+      <%= button_to 'Create a similar lesson', create_next_lesson_lesson_path(lesson_id: @lesson.id), method: :post, class: "one-lesson-btn-edit", title: "Create a lesson on the same day and time, but next week" %>
     </div>
-    <%= link_to 'Edit', edit_lesson_path(@lesson), class: "one_lesson_btn_edit", title: "Edit this lesson" %>
-    <%= button_to 'Delete', lesson_path(@lesson), method: :delete, class: "one_lesson_btn_destroy", title: "Delete this lesson" %>  
+    <%= link_to 'Edit', edit_lesson_path(@lesson), class: "one-lesson-btn-edit", title: "Edit this lesson" %>
+    <%= button_to 'Delete', lesson_path(@lesson), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "one-lesson-btn-destroy", title: "Delete this lesson" %>  
   </div>
   <% if @lesson.homework.present? %>
-    <div class="one_homework_info">
+    <div class="one-homework-info">
       <div class="homework">
         <span><%= @lesson.homework %></span>
       </div>
-      <div class="homework_btn">
-        <%= link_to "Show all homeworks", homework_lesson_path(student_id: @lesson.student.id), class:"show_all_homeworks_button" %>
+      <div class="homework-btn">
+        <%= link_to "Show all homeworks", homework_lesson_path(student_id: @lesson.student.id), class:"show-all-homeworks-button" %>
 
       </div>
     </div>

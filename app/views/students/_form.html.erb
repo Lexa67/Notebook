@@ -1,17 +1,17 @@
-<div class="form_new_lesson">
+<div class="form-for-everything">
   <%= form_with(model: student) do |form| %>
-    <div class="form_lesson_date">
-      <%= form.label :name, style: "display: block", class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
+    <div class="form-for-input">
+      <%= form.label :name, style: "display: block", class: "form-my-label" %>
+      <%= form.text_field :name, class: "form-my-control" %>
     </div>
 
-    <div class="form_lesson_date">
-      <%= form.label :price, style: "display: block", class: "form-label" %>
-      <%= form.text_field :price, class: "form-control" %>
+    <div class="form-for-input">
+      <%= form.label :price, style: "display: block", class: "form-my-label" %>
+      <%= form.text_field :price, class: "form-my-control" %>
     </div>
 
-    <div class="form_create_lesson">
-      <%= form.submit class: "button_primary" %>
+    <div class="form-submit-all">
+      <%= form.submit class: "button-primary" %>
     </div>
   <% end %>
 </div>

@@ -1,13 +1,13 @@
 <% flash.each do |type, message| %>
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
-<div class="show_user_info_string">
-  <div class="user_info_string">
-    <div class="user_info"  title="Show all lessons for this student" data-user-path="<%= user_path(@user) %>">
-      <p class="user_info_user">
+<div class="show-user-info-string">
+  <div class="user-info-string">
+    <div class="user-info"  title="Show all lessons for this student" data-user-path="<%= user_path(@user) %>">
+      <p class="user-info-user">
           <%= @user.name %>
       </p>
-      <p class="user_info_email">
+      <p class="user-info-email">
         <%= @user.email %>
       </p>
     </div>

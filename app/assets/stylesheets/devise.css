@@ -1,4 +1,4 @@
-.devise_container {
+.devise-container {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -6,14 +6,14 @@
 
 .notebook {
     font-size: 150px;
-    animation-name: notebook_title;
+    animation-name: notebook-title;
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
 
-@keyframes notebook_title {
+@keyframes notebook-title {
     0% {
         opacity: 0;
         transform: translateY(-100%);
@@ -25,7 +25,7 @@
     }
 }
 
-.log_in_container {
+.log-in-container {
     display: flex;
     opacity: 0;
     flex-direction: column;
@@ -34,7 +34,7 @@
     padding: 20px;
     border-radius: 15px;
     background-color: rgb(1 155 147);
-    animation-name: log_in_anim;
+    animation-name: log-in-anim;
     animation-delay: 1.2s;
     animation-duration: 1.5s;
     animation-iteration-count: 1;
@@ -42,7 +42,7 @@
     animation-timing-function: linear;
 }
 
-@keyframes log_in_anim {
+@keyframes log-in-anim {
     0% {
         opacity: 0;
     }
@@ -52,7 +52,7 @@
     }
 }
 
-.forgot_container {
+.forgot-container {
     position: relative;
     display: flex;
     top: 40px;
@@ -84,7 +84,7 @@ input[type="checkbox"]:checked {
     box-shadow: inset 0 0 12px black;
 }
 
-.devise_footer{
+.devise-footer{
     display: flex;
     justify-content: center;
     gap: 60px;
