@@ -27,7 +27,7 @@
     margin-bottom: 20px;
 }
 
-.form-for-input, .form-lesson-user, .form-user-price {
+.form-for-input, .form-lesson-student, .form-user-price {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
@@ -41,7 +41,7 @@
     opacity: 0.6;
 }
 
-.form-lesson-user .form-my-control {
+.form-lesson-student .form-my-control {
     width: 226px;
 }
 

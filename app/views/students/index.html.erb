@@ -4,10 +4,10 @@
 <h1 class="hero-title">List of students</h1>
 <% if current_user.role == "teacher" %>
   <div class="btn-container">
-    <%= link_to "New student", new_student_path, class: "btn-user" %>
+    <%= link_to "New student", new_student_path, class: "btn-student" %>
   </div>
 <% end %>
-<div class="user-table">
+<div class="student-table">
   <p>Name</p>
   <% if current_user.role == "admin" %>
     <p>Teacher</p>
@@ -15,7 +15,7 @@
   <p>Price</p>
   <p>Options</p>
 </div>
-<div class="user-container">
+<div class="student-container">
   <% @students.each do |student| %>
     <%= render student %>
   <% end %>
