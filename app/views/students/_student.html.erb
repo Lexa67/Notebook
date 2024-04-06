@@ -1,14 +1,14 @@
-<div class="user-info-string">
-  <div class="user-info"  title="Show all lessons for this student" data-user-path="<%= lessons_path(student_id: student.id)%>">
-    <p class="user-info-user">
+<div class="student-info-container">
+  <div class="student-info"  title="Show all lessons for this student" data-user-path="<%= lessons_path(student_id: student.id)%>">
+    <p class="student-info-name">
       <%= student.name %>
     </p>
     <% if current_user.role == "admin" %>
-      <p class="user-info-user">
+      <p class="student-info-name">
         <%= student.user.name %>
       </p>
     <% end %>
-    <p class="user-info-email">
+    <p class="student-info-email">
       <%= student.price %>
     </p>
   </div>

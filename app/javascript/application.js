@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
   document.addEventListener("click", function(event) {
-      if (event.target.closest(".user-info")) {
-        const userInfo = event.target.closest(".user-info");
+      if (event.target.closest(".student-info")) {
+        const userInfo = event.target.closest(".student-info");
         const userPath = userInfo.dataset.userPath;
         window.location.href = userPath;
       }

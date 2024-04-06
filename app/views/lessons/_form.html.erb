@@ -5,7 +5,7 @@
     <%= form.datetime_field :lesson_date, class: "form-my-control" %>
   </div>
 
-  <div class="form-lesson-user">
+  <div class="form-lesson-student">
     <%= form.label :student_id, style: "display: block", class: "form-my-label" %>
     <%= form.collection_select :student_id, Student.where(user_id: current_user.id).order(:name), :id, :name, { prompt: "All students"}, { class: "form-my-control" } %>
   </div>

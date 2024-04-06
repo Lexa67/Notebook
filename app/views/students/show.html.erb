@@ -5,14 +5,14 @@
   <%= render @student %>
 </div>
 <div class="total-prices">
-  <div class="paid-price">
+  <div class="header-price">
     <strong> Paid lessons: </strong>
-    <span class="total-price" title="Amount for all past paid lessons"><%= @total_price %> UAH</span>
+    <span class="total-paid" title="Amount for all past paid lessons"><%= @total_price %> UAH</span>
   </div>
   <%= link_to "New lesson", new_lesson_path, class: "button-new-lesson" %>
-  <div class="not-paid-price" title="Amount for all past unpaid lessons">
+  <div class="header-price" title="Amount for all past unpaid lessons">
     <strong> Not paid lessons: </strong>
-    <span class="total-not-price"><%= @not_paid_total_price %> UAH</span>
+    <span class="total-not-paid"><%= @not_paid_total_price %> UAH</span>
   </div>
 </div>
 <div class="lesson-table">
