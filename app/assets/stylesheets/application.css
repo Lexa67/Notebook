@@ -1,12 +1,12 @@
 /*
-*= require kaminari
-*= require lessons
-*= require users
-*= require icons
-*= require flash_messages
-*= require forms
 *= require buttons
 *= require devise
+*= require flash_messages
+*= require forms
+*= require icons
+*= require kaminari
+*= require lessons
+*= require students
 */
 
 body {
@@ -18,20 +18,52 @@ body {
 }
 
 .header{
-    display: flex;
-}
-
-.hero-title {
-    text-align: center;
-    color: rgb(111, 224, 186);
-    margin: 0 0 5px 0;
+    min-width: 715px;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        min-width: 1326px;
+    }
 }
 
 .header-menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px 20px 0 20px;
     border-bottom: 1px solid rgb(46 175 175);
+    
+    @media screen and (min-width: 768px) {
+        min-width: 1326px;
+        justify-content: space-between;
+    }
+}
+
+.hero-title {
+    display: flex;
+    text-align: center;
+    color: rgb(111, 224, 186);
+    margin: auto;
+    justify-content: center;
+    
+    @media screen and (min-width: 768px) {
+        min-width: 1326px;
+        margin: 0 0 5px 0;
+    }
+}
+
+.total-prices {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(169, 169, 169, 0.411);
+    border-radius: 5px;
+    text-align: center;
+    
+    @media screen and (min-width: 768px) {
+        margin: 5px auto;
+        padding: 5px;
+        min-width: 1326px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .header-price {

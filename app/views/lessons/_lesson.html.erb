@@ -8,7 +8,7 @@
         <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg> 
   <% end %>
       <ul class="params-ul">
-      <li class="params-li">
+      <li class="params-li-date">
         <%= link_to lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button", title: "Show all lessons for #{lesson.lesson_date.strftime('%d/%m')}" do %>
         <%= lesson.lesson_date.strftime('%d/%m/%Y') %> 
         <span class="day-of-week">
@@ -17,15 +17,15 @@
         <% end %>
       </li>
     
-      <li class="params-li">
+      <li class="params-li-time">
         <%= lesson.lesson_date.strftime('%H:%M') %>
       </li>
     
-      <li class="params-li">
+      <li class="params-li-student">
         <%= link_to "#{lesson.student.name}", student_path(id: lesson.student.id), class: "button", title: "Show all #{lesson.student.name}'s lessons" %>
       </li>
     
-      <li class="params-li">
+      <li class="params-li-lesson-status">
         <%=lesson.confirmed? ? "Confirmed / " : "Not confirmed / "%>
         <%=lesson.paid? ? link_to("Paid", lessons_path(paid: true), class: "button", title: "Show all paid lessons") : link_to("Not paid", lessons_path(paid: false), class: "button", title: "Show all unpaid lessons") %>
       </li>

@@ -1,17 +1,27 @@
 .icon-check {
-    position: absolute;
-    translate: 0px 13px;
-    fill: aqua;
-    width: 20px;
-    height: 20px;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        position: absolute;
+        translate: 0px 13px;
+        fill: aqua;
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .icon-cross {
-    position: absolute;
-    translate: 0px 13px;
-    fill: red;
-    width: 22px;
-    height: 22px;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        position: absolute;
+        translate: 0px 13px;
+        fill: red;
+        width: 22px;
+        height: 22px;
+    }
 }
 
 .icon-edit {
