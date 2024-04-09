@@ -1,16 +1,12 @@
-.total-prices {
-    display: flex;
-    background-color: rgba(169, 169, 169, 0.411);
-    border-radius: 5px;
-    padding: 5px;
-    justify-content: space-between;
-    margin: 5px 20px;
-}
-
 .table-header {
     display: flex;
     flex-direction: column;
-    margin: auto 20px;
+    margin: auto;
+    
+    @media screen and (min-width: 768px) {
+        min-width: 1326px;
+        
+    }
 }
 
 .container {
@@ -30,7 +26,11 @@
 
 .lesson-info {
     width: 100%;
-    padding-left: 45px;
+    
+    @media screen and (min-width: 768px) {
+        padding-left: 45px;
+    }
+
 }
 
 .table-ul {
@@ -40,53 +40,70 @@
     color: aqua;
     border-radius: 5px;
     height: 40px;
-    font-size: larger;
+    font-size: small;
     line-height: 2;
     padding: 0;
-}
 
-.params-ul {
-    display: flex;
-    padding: 0;
-    text-align: center;
-}
-
-.params-li {
-    list-style: none;
-    flex-grow: 1;
+    @media screen and (min-width: 768px) {
+        font-size: larger;
+        
+    }
 }
 
 .table-li-status, .table-li-date, .table-li-time, .table-li-student, .table-li-lesson-status, .table-li-options {
     display: flex;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    @media screen and (min-width: 768px) {
+        position: relative;
+        flex-grow: 0;
+    }
 }
 
 .table-li-status{
-    left: 30px;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        left: 10px;
+    }
 }
 
 .table-li-date {
-    left: 85px;
+    left: 60px;
+    @media screen and (min-width: 768px) {
+        left: 100px;
+    }
 }
 
 .table-li-time {
-    left: 290px;
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        left: 270px;
+    }
 }
 
 .table-li-student {
-    left: 480px;
+    left: 160px;
+    @media screen and (min-width: 768px) {
+        left: 470px;
+    }
 }
 
 .table-li-lesson-status {
-    left: 620px;
+    left: 300px;
+    @media screen and (min-width: 768px) {
+        left: 720px;
+    }
 }
 
 .table-li-options {
-    left: 860px;
-}
-
-.params-li {
-    max-width: 240px;
+    left: 410px;
+    @media screen and (min-width: 768px) {
+        left: 870px;
+    }
 }
 
 .table-li:first-child{
@@ -95,6 +112,42 @@
 
 .table-li:last-child{
     max-width: 141px;
+}
+
+.params-ul {
+    display: flex;
+    padding: 0;
+    text-align: center;
+}
+
+.params-li-date, .params-li-time, .params-li-student, .params-li-lesson-status {
+    list-style: none;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.params-li-date {
+    width: 140px;
+
+    @media screen and (min-width: 768px) {
+        width: auto;
+    }
+}
+
+.params-li-time {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+}
+
+.params-li-student {
+    width: 200px;
+}
+
+.params-li-lesson-status {
+    width: 220px;
 }
 
 .paid {
@@ -113,6 +166,7 @@
     padding: 5px;
     border-radius: 10px;
     transition-duration: 0.3s;
+    min-width: 715px;
 }
 
 .paid:hover, .not-paid:hover {

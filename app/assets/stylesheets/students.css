@@ -31,10 +31,6 @@
     border-radius: 10px;
 }
 
-.show-user-info-string {
-    margin: 0 20px;
-}
-
 .student-info-container {
     display: flex;
     transition-duration: 0.3s;
