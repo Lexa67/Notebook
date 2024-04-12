@@ -2,19 +2,20 @@
   <div class="alert <%= "alert-#{type}" %>"><%= message %></div>
 <% end %>
 <h1 class="hero-title">List of lessons</h1>
-  <%= render partial: 'lessons/header_lesson' %>
     <% if current_user.role == "admin" %>
-      <p class="student-table">This information can only be viewed by teachers</p>
-    <% end %>
-    <% @lessons.each do |lesson| %>
-        <% if lesson.paid %>
-          <div class="paid">
-            <%= render lesson %>
-          </div>
-        <% else %>
-          <div class="not-paid">
-            <%= render lesson %>
-          </div>
+      <p class="student-table error-message">This information can only be viewed by teachers</p>
+    <% else %>
+      <%= render partial: 'lessons/header_lesson' %>
+      <% @lessons.each do |lesson| %>
+          <% if lesson.paid %>
+            <div class="paid">
+              <%= render lesson %>
+            </div>
+          <% else %>
+            <div class="not-paid">
+              <%= render lesson %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-  <%= paginate @lessons %>
+    <%= paginate @lessons %>
+  <% end %>

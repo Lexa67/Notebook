@@ -79,6 +79,7 @@ class LessonsController < ApplicationController
 
   def homework
     @lessons = Lesson.where(student_id: params[:student_id]).order(lesson_date: :desc)
+    @lessons = @lessons.page(params[:page]).per(10)
   end
 
   private
