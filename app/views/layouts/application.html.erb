@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <title>Notebook</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-  <body>
-    <% if user_signed_in? %>
-      <header class="header">
-        <a class="header-button" href="<%= students_path %>"><h1>Students</h1></a>
-        <% if current_user.role == "admin" %>
-          <a class="header-button" href="<%= users_path %>"><h1>Teachers</h1></a>
-        <% else %>
-          <a class="header-button" href="<%= lessons_path %>"><h1>Lessons</h1></a>
-        <% end %>
-      </header>
-      <div class="header-menu">
-        <a class="user-name-btn" href="<%= edit_user_registration_path %>" title="Edit email and password"><%= current_user.name %></a>
-        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "log-out-btn" %>
-      </div>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <% if user_signed_in? %>
+  <header class="header">
+    <a class="header-button" href="<%= students_path %>"><h1>Students</h1></a>
+    <% if current_user.role == "admin" %>
+    <a class="header-button" href="<%= users_path %>"><h1>Teachers</h1></a>
+    <% else %>
+    <a class="header-button" href="<%= lessons_path %>"><h1>Lessons</h1></a>
     <% end %>
-      <%= yield %>
+  </header>
+  <div class="header-menu">
+    <a class="user-name-btn" href="<%= edit_user_registration_path %>" title="Edit email and password"><%= current_user.name %></a>
+    <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "log-out-btn" %>
+  </div>
+  <% end %>
+  <%= yield %>
     <script src="/app/javascript/application.js"></script>
   </body>
 </html>

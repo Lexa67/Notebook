@@ -1,7 +1,7 @@
 <h2 class="hero-title">All homeworks for <%=@lessons.first.student.name%></h2>
-<div class="homework-table">
+<div class="homework-table-header">
     <div class="homework-date">Date</div>
-    <div class="homework-homework">Homework</div>
+    <div class="homework-header-homework">Homework</div>
     <div class="libero"></div>
 </div>
 <% @lessons.each do |lesson| %>
@@ -13,3 +13,6 @@
         </div>
     </div>
 <% end %>
+<div class="table-header">
+    <%= paginate @lessons %>
+</div>

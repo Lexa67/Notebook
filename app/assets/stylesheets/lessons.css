@@ -204,7 +204,7 @@
     color: aquamarine;
 }
 
-.homework-table {
+.homework-table-header {
     display: flex;
     margin: 0 auto;
     justify-content: start;
@@ -214,7 +214,7 @@
     width: 800px;
 }
 
-.homework-date, .homework-homework{
+.homework-date, .homework-header-homework{
     display: flex;
     padding: 10px;
     justify-content: center;
@@ -226,7 +226,7 @@
     width: 30%;
 }
 
-.homework-homework {
+.homework-header-homework {
     width: 100%;
 }
 
