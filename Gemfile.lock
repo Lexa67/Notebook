@@ -258,7 +258,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
-  pg
+  pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.1)
   rails-ujs
