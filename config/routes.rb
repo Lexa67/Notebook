@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   resources :students
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :lessons do
-    patch 'toggle_paid', on: :member
-    patch 'toggle_confirmed', on: :member
-    get 'homework', on: :member
+    member do
+      patch 'toggle_paid'
+      patch 'toggle_confirmed'
+      get 'homework'
+      delete 'remove_image'
+      post 'create_next_lesson'
+    end
     collection do
       get :filter_by_date
     end

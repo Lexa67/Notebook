@@ -5,6 +5,8 @@ class Lesson < ApplicationRecord
   validates :lesson_date, presence: true
   validates :student_id, presence: true
   
+  mount_uploader :image, ImageUploader
+  
   def not_started?
     current_time = Time.now
     lesson_date < current_time

@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_lesson, only: %i[ show edit update destroy toggle_paid toggle_confirmed]
+  before_action :set_lesson, only: %i[ show edit update destroy toggle_paid toggle_confirmed remove_image]
   before_action :total_price, only: [:index]
 
   def index
@@ -27,7 +27,7 @@ class LessonsController < ApplicationController
       redirect_to new_lesson_path
     end
   end
-  
+    
   def update
     if @lesson.update(lesson_params)
       flash[:notice] = "Lesson was successfully updated."
@@ -45,6 +45,15 @@ class LessonsController < ApplicationController
     end
   end
   
+  def remove_image
+    if @lesson.image.present?
+      @lesson.remove_image!
+      @lesson.save
+      flash[:notice] = "Image was deleted."
+      redirect_to lesson_url(@lesson)
+    end
+  end
+
   def filter_by_date
     start_date = params[:start_date]
     end_date = params[:end_date]
@@ -93,7 +102,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:lesson_date, :student_id, :homework)
+    params.require(:lesson).permit(:lesson_date, :student_id, :homework, :image)
   end
 
   def days_until(original_date, next_date)

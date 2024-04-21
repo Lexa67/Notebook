@@ -14,6 +14,12 @@
     <%= form.label :homework, style: "display: block", class: "form-my-label" %>
     <%= form.text_area :homework, class: "form-my-control", placeholder: "This field is not required" %>
   </div>
+  <div class="form-container">
+    <div class="form-for-input">
+      <%= form.label :image, "Upload image", style: "display: block", class: "form-my-label" %>
+      <%= form.file_field :image, class: "form-my-control" %>
+    </div>
+  </div>
 
   <div class="form-submit-all">
     <%= form.submit class: "button-primary" %>

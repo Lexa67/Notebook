@@ -49,6 +49,17 @@
     opacity: 0.6;
 }
 
+.form-container {
+    margin-bottom: 10px;
+}
+
+.form-container::after {
+    content: "The new picture will replace the old one";
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+}
+
 .form-lesson-student .form-my-control {
     width: 226px;
 }

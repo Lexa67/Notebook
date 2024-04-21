@@ -196,6 +196,7 @@
     background-color: rgb(65 135 131);
     color: aqua;
     white-space: pre-line;
+    gap: 10px;
 }
 
 .homework::before {
@@ -257,4 +258,15 @@
     border-bottom: 1px solid black;
     align-items: baseline;
     padding: 5px;
+}
+
+.homework-image img {
+    width: 100px;
+}
+
+.homework-image img:hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
 }
