@@ -22,6 +22,9 @@ body {
     @media screen and (min-width: 768px) {
         display: flex;
         min-width: 1326px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
     }
 }
 
