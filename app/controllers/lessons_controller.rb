@@ -86,7 +86,7 @@ class LessonsController < ApplicationController
   
   def set_lesson
     if params[:id] == "by_date"
-      @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date]).order(date: :desc)
+      @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date]).order(lesson_date: :desc)
     else
       @lesson = Lesson.find(params[:id])
     end
