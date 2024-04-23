@@ -32,6 +32,16 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'rails-ujs'
 
+gem 'capistrano'
+
+gem 'capistrano-rails'
+
+gem 'capistrano-bundler'
+
+gem 'capistrano-rbenv'
+
+gem 'capistrano3-puma'
+
 
 
 # Use Redis adapter to run Action Cable in production
