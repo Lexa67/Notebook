@@ -1,10 +1,4 @@
 # config valid for current version and patch releases of Capistrano
-before 'deploy:check', :upload_secret_key do
-    on roles(:app) do
-      upload!('config/master.key', shared_path.join('config/master.key'))
-    end
-  end
-  
 lock "~> 3.18.1"
 
 set :application, "Notebook"
