@@ -11,12 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_04_21_141056) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "lessons", force: :cascade do |t|
     t.datetime "lesson_date"
-    t.bigint "student_id", null: false
+    t.integer "student_id", null: false
     t.boolean "paid"
     t.boolean "confirmed"
     t.text "homework"
@@ -27,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_21_141056) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.string "name"
     t.decimal "price"
     t.datetime "created_at", null: false
