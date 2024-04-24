@@ -56,6 +56,6 @@ server "ec2-13-60-50-49.eu-north-1.compute.amazonaws.com",
     user: "ubuntu", # overrides user setting above
     keys: %w(/home/oem/Notebook/key-amazon.pem),
     forward_agent: true,
-    auth_methods: %w(publickey password)
+    auth_methods: %w(publickey password),
     password: "please use keys"
   }
