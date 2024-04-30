@@ -18,7 +18,8 @@
       </li>
     
       <li class="params-li-time">
-        <%= lesson.lesson_date.strftime('%H:%M') %>
+        <span style="color:red"><%= lesson.lesson_date.strftime('%H:%M') %></span>
+        <span style="color: yellow;">(<%= (lesson.lesson_date + 1.hour).strftime('%H:%M') %>)</span>
       </li>
     
       <li class="params-li-student">
