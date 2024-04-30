@@ -4,8 +4,7 @@
     margin: auto;
     
     @media screen and (min-width: 768px) {
-        min-width: 1326px;
-        
+        min-width: 1326px;    
     }
 }
 
@@ -30,7 +29,6 @@
     @media screen and (min-width: 768px) {
         padding-left: 45px;
     }
-
 }
 
 .table-ul {
@@ -46,7 +44,6 @@
 
     @media screen and (min-width: 768px) {
         font-size: larger;
-        
     }
 }
 
@@ -73,7 +70,7 @@
 .table-li-date {
     left: 60px;
     @media screen and (min-width: 768px) {
-        left: 100px;
+        left: 90px;
     }
 }
 
@@ -81,28 +78,28 @@
     display: none;
     @media screen and (min-width: 768px) {
         display: flex;
-        left: 270px;
+        left: 230px;
     }
 }
 
 .table-li-student {
     left: 160px;
     @media screen and (min-width: 768px) {
-        left: 470px;
+        left: 405px;
     }
 }
 
 .table-li-lesson-status {
     left: 300px;
     @media screen and (min-width: 768px) {
-        left: 720px;
+        left: 640px;
     }
 }
 
 .table-li-options {
     left: 410px;
     @media screen and (min-width: 768px) {
-        left: 870px;
+        left: 790px;
     }
 }
 
@@ -138,7 +135,10 @@
     display: none;
 
     @media screen and (min-width: 768px) {
-        display: block;
+        display: flex;
+        justify-content: space-around;
+        font-weight: 600;
+
     }
 }
 
@@ -175,6 +175,7 @@
 
 .day-of-week {
     color: yellow;
+    font-size: 15px;
 }
 
 .one-homework-info{
