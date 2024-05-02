@@ -69,6 +69,7 @@ body {
     background-color: rgba(169, 169, 169, 0.411);
     border-radius: 5px;
     text-align: center;
+    width: 100%;
     
     @media screen and (min-width: 768px) {
         margin: 5px auto;
@@ -91,6 +92,15 @@ body {
 .total-not-paid {
     font-size: 20px;
     color: red;
+}
+
+.container-for-phone {
+    max-width: 768px;
+    margin: auto;
+    @media screen and (min-width: 768px) {
+        max-width: 1326px;
+    }
+    
 }
 
 

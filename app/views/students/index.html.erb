@@ -7,6 +7,7 @@
     <%= link_to "New student", new_student_path, class: "btn-student" %>
   </div>
 <% end %>
+<div class="container-for-phone">
 <div class="student-table">
   <p>Name</p>
   <% if current_user.role == "admin" %>
@@ -19,4 +20,5 @@
   <% @students.each do |student| %>
     <%= render student %>
   <% end %>
+</div>
 </div>

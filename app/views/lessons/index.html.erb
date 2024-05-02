@@ -4,7 +4,7 @@
 <h1 class="hero-title">List of lessons</h1>
     <% if current_user.role == "admin" %>
       <p class="student-table error-message">This information can only be viewed by teachers</p>
-    <% else %>
+      <% else %>
       <%= render partial: 'lessons/header_lesson' %>
       <% @lessons.each do |lesson| %>
           <% if lesson.paid %>

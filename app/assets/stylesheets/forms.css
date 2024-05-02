@@ -4,6 +4,7 @@
     gap: 5px;
     justify-content: center;
     align-items: center;
+    width: 100%;
     
     @media screen and (min-width: 768px) {
         min-width: 1326px;
@@ -31,8 +32,14 @@
 .form-for-everything {
     display: flex;
     justify-content: center;
+    margin: auto;
+    padding: 10px;
     text-align: center;
     margin-bottom: 20px;
+    
+    @media screen and (min-width: 768px) {
+        padding: 0;
+    }
 }
 
 .form-for-input, .form-lesson-student, .form-user-price {
