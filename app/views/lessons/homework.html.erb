@@ -1,18 +1,20 @@
 <h2 class="hero-title">All homeworks for <%=@lessons.first.student.name%></h2>
-<div class="homework-table-header">
-    <div class="homework-date">Date</div>
-    <div class="homework-header-homework">Homework</div>
-    <div class="libero"></div>
-</div>
-<% @lessons.each do |lesson| %>
-    <div class="homework-table-body">
-        <div class="homework-date"><%= link_to lesson.lesson_date.strftime('%d-%m-%Y  %a'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button", title: "Show all lessons for #{lesson.lesson_date.strftime('%d/%m')}" %></div>
-        <div class="homework-info"><%= lesson.homework %></div>
-        <div class="homework-show-btn">
-            <%= link_to "Show", lesson_path(lesson), class: "show-btn", title: "Show this lesson" %>
-        </div>
+<div class="container-for-phone">
+    <div class="homework-table-header">
+        <div class="homework-date">Date</div>
+        <div class="homework-header-homework">Homework</div>
+        <div class="libero"></div>
     </div>
-<% end %>
-<div class="table-header">
-    <%= paginate @lessons %>
+    <% @lessons.each do |lesson| %>
+        <div class="homework-table-body">
+            <div class="homework-date"><%= link_to lesson.lesson_date.strftime('%d-%m-%Y  %a'), lessons_by_date_path(date: lesson.lesson_date.strftime('%Y-%m-%d')), class: "button", title: "Show all lessons for #{lesson.lesson_date.strftime('%d/%m')}" %></div>
+            <div class="homework-info"><%= lesson.homework %></div>
+            <div class="homework-show-btn">
+                <%= link_to "Show", lesson_path(lesson), class: "show-btn", title: "Show this lesson" %>
+            </div>
+        </div>
+    <% end %>
+    <div class="table-header">
+        <%= paginate @lessons %>
+    </div>
 </div>
