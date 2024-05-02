@@ -18,9 +18,10 @@ body {
 }
 
 .header{
-    min-width: 715px;
+    max-width: 768px;
     @media screen and (min-width: 768px) {
         display: flex;
+        margin: auto;
         min-width: 1326px;
         position: sticky;
         top: 0;
@@ -30,11 +31,12 @@ body {
 
 .header-menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px 20px 0 20px;
     border-bottom: 1px solid rgb(46 175 175);
     
     @media screen and (min-width: 768px) {
+        margin: auto;
         min-width: 1326px;
         justify-content: space-between;
     }
