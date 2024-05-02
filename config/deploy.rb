@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.18.1"
 
-set :application, "Notebook"
+set :application, "notebook"
 set :repo_url, "https://github.com/Lexa67/Notebook.git"
 
 # Default branch is :main
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/ubuntu/Notebook"
+set :deploy_to, "/home/ubuntu/notebook"
 set :use_sudo, true
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
