@@ -5,12 +5,16 @@
 }
 
 .notebook {
-    font-size: 150px;
+    font-size: 80px;
     animation-name: notebook-title;
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
+    
+    @media screen and (min-width: 768px) {
+        font-size: 150px;
+    }
 }
 
 @keyframes notebook-title {
