@@ -1,5 +1,5 @@
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # Общие параметры, например, хост, порт, могут быть указаны здесь,
@@ -19,7 +19,8 @@ test:
   database: notebook_test
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: notebook_production
   username: <%= ENV["NOTEBOOK_DB_USER"] %> # Имя пользователя из переменной окружения
   password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %> # Пароль из переменной окружения
