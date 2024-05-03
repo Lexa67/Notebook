@@ -1,0 +1,12 @@
+oem@oem-Lenovo-G580 Notebook (main) $ systemctl status puma_Notebook_production.service
+● puma_Notebook_production.service - Puma HTTP Server for Notebook Production
+     Loaded: loaded (/lib/systemd/system/puma_Notebook_production.service; disabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Tue 2024-04-30 15:43:24 EEST; 14s ago
+    Process: 30339 ExecStart=/path/to/your/puma --config config/puma/production.rb (code=exited, status=217/USER)
+   Main PID: 30339 (code=exited, status=217/USER)
+
+апр 30 15:43:24 oem-Lenovo-G580 systemd[1]: puma_Notebook_production.service: Scheduled restart job, restart counter is at 5.
+апр 30 15:43:24 oem-Lenovo-G580 systemd[1]: Stopped Puma HTTP Server for Notebook Production.
+апр 30 15:43:24 oem-Lenovo-G580 systemd[1]: puma_Notebook_production.service: Start request repeated too quickly.
+апр 30 15:43:24 oem-Lenovo-G580 systemd[1]: puma_Notebook_production.service: Failed with result 'exit-code'.
+апр 30 15:43:24 oem-Lenovo-G580 systemd[1]: Failed to start Puma HTTP Server for Notebook Production.
