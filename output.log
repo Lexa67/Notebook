@@ -1,0 +1,225 @@
+00:00 rbenv:validate
+      rbenv: rbenv_ruby is not set; ruby version will be defined by the remote hosts via rbenv
+00:00 git:wrapper
+      01 mkdir -p /tmp
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 1.412s
+      Uploading /tmp/git-ssh-3a88e47b9e9d297cc437.sh 100.0%
+      02 chmod 700 /tmp/git-ssh-3a88e47b9e9d297cc437.sh
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.236s
+00:02 git:check
+      01 git ls-remote https://github.com/Lexa67/Notebook.git HEAD
+      01 646605011dd1e07c1bfce4bcee8f406c4d8d45db	HEAD
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.659s
+00:02 deploy:check:directories
+      01 mkdir -p /home/ubuntu/notebook/shared /home/ubuntu/notebook/releases
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.237s
+00:03 deploy:check:linked_dirs
+      01 mkdir -p /home/ubuntu/notebook/shared/log /home/ubuntu/notebook/shared/tmp/pids /home/ubuntu/notebook/shared/tmp/cache /home/ubuntu/notebook/shared/tmp/sockets /home/ubuntu/notebook/shared/vendor/bundle /home/ubuntu/notebook/shared/public/system /home/ubuntu/notebook/shared/public/assets
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.240s
+00:04 git:clone
+      The repository mirror is at /home/ubuntu/notebook/repo
+00:04 git:update
+      01 git remote set-url origin https://github.com/Lexa67/Notebook.git
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.247s
+      02 git remote update --prune
+      02 Fetching origin
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.630s
+00:05 git:create_release
+      01 mkdir -p /home/ubuntu/notebook/releases/20240503135334
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.258s
+      02 git archive main | /usr/bin/env tar -x -f - -C /home/ubuntu/notebook/releases/20240503135334
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.253s
+00:06 deploy:set_current_revision
+      01 echo "646605011dd1e07c1bfce4bcee8f406c4d8d45db" > REVISION
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.247s
+00:07 deploy:symlink:linked_dirs
+      01 mkdir -p /home/ubuntu/notebook/releases/20240503135334 /home/ubuntu/notebook/releases/20240503135334/tmp /home/ubuntu/notebook/releases/20240503135334/vendor /home/ubuntu/notebook/releases/20240503135334/public
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.245s
+      02 rm -rf /home/ubuntu/notebook/releases/20240503135334/log
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.237s
+      03 ln -s /home/ubuntu/notebook/shared/log /home/ubuntu/notebook/releases/20240503135334/log
+    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.246s
+      04 rm -rf /home/ubuntu/notebook/releases/20240503135334/tmp/pids
+    ✔ 04 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.245s
+      05 ln -s /home/ubuntu/notebook/shared/tmp/pids /home/ubuntu/notebook/releases/20240503135334/tmp/pids
+    ✔ 05 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.241s
+      06 ln -s /home/ubuntu/notebook/shared/tmp/cache /home/ubuntu/notebook/releases/20240503135334/tmp/cache
+    ✔ 06 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.243s
+      07 ln -s /home/ubuntu/notebook/shared/tmp/sockets /home/ubuntu/notebook/releases/20240503135334/tmp/sockets
+    ✔ 07 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.241s
+      08 ln -s /home/ubuntu/notebook/shared/vendor/bundle /home/ubuntu/notebook/releases/20240503135334/vendor/bundle
+    ✔ 08 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.265s
+      09 ln -s /home/ubuntu/notebook/shared/public/system /home/ubuntu/notebook/releases/20240503135334/public/system
+    ✔ 09 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.246s
+      10 ln -s /home/ubuntu/notebook/shared/public/assets /home/ubuntu/notebook/releases/20240503135334/public/assets
+    ✔ 10 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.317s
+00:13 bundler:config
+      01 $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.446s
+      02 $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/ubuntu/notebook/shared/bundle
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.466s
+      03 $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test
+    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.463s
+00:15 bundler:install
+      The Gemfile's dependencies are satisfied, skipping installation
+00:15 deploy:assets:precompile
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile
+      01 rake aborted!
+      01 LoadError: Error loading the 'sqlite3' Active Record adapter. Missing a gem it depends on? sqlite3 is not part of the bundle. Add it to your Gemfile. (LoadError)
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:13:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/connection_handler.rb:268:in `resolve_pool_config'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/connection_handler.rb:129:in `establish_connection'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_handling.rb:52:in `establish_connection'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/railtie.rb:268:in `block (2 levels) in <class:Railtie>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:95:in `class_eval'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:95:in `block in execute_hook'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:85:in `with_execution_control'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:90:in `execute_hook'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:76:in `block in run_load_hooks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:75:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:75:in `run_load_hooks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/base.rb:333:in `<module:ActiveRecord>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/base.rb:15:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/releases/20240503135334/app/models/application_record.rb:1:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:26:in `require'
+      01 /home/ubuntu/notebook/releases/20240503135334/app/models/user.rb:1:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:26:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/inflector/methods.rb:278:in `const_get'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/inflector/methods.rb:278:in `constantize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:327:in `get'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:83:in `to'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:78:in `modules'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:95:in `routes'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:162:in `default_used_route'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:72:in `initialize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:361:in `new'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:361:in `add_mapping'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:243:in `block in devise_for'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:242:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:242:in `devise_for'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/routes.rb:4:in `block in <main>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:428:in `instance_exec'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:428:in `eval_block'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:410:in `draw'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/routes.rb:1:in `<main>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `load'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `block in load_paths'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `load_paths'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:24:in `reload!'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:38:in `block in updater'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/file_update_checker.rb:83:in `execute'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:13:in `execute'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/finisher.rb:158:in `block in <module:Finisher>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:32:in `instance_exec'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:32:in `run'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:61:in `block in run_initializers'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:60:in `run_initializers'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:372:in `initialize!'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/environment.rb:5:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:348:in `require_environment!'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:506:in `block in run_tasks_blocks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/rake-13.2.1/exe/rake:27:in `<top (required)>'
+      01 /home/ubuntu/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+      01 /home/ubuntu/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+      01 
+      01 Caused by:
+      01 Gem::LoadError: sqlite3 is not part of the bundle. Add it to your Gemfile. (Gem::LoadError)
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:13:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/connection_handler.rb:268:in `resolve_pool_config'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/connection_handler.rb:129:in `establish_connection'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_handling.rb:52:in `establish_connection'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/railtie.rb:268:in `block (2 levels) in <class:Railtie>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:95:in `class_eval'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:95:in `block in execute_hook'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:85:in `with_execution_control'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:90:in `execute_hook'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:76:in `block in run_load_hooks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:75:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/lazy_load_hooks.rb:75:in `run_load_hooks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/base.rb:333:in `<module:ActiveRecord>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/base.rb:15:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/releases/20240503135334/app/models/application_record.rb:1:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:26:in `require'
+      01 /home/ubuntu/notebook/releases/20240503135334/app/models/user.rb:1:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:26:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/inflector/methods.rb:278:in `const_get'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/inflector/methods.rb:278:in `constantize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:327:in `get'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:83:in `to'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:78:in `modules'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:95:in `routes'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:162:in `default_used_route'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/mapping.rb:72:in `initialize'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:361:in `new'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise.rb:361:in `add_mapping'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:243:in `block in devise_for'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:242:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/devise-4.9.4/lib/devise/rails/routes.rb:242:in `devise_for'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/routes.rb:4:in `block in <main>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:428:in `instance_exec'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:428:in `eval_block'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/actionpack-7.0.8.1/lib/action_dispatch/routing/route_set.rb:410:in `draw'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/routes.rb:1:in `<main>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `load'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `block in load_paths'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `each'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:50:in `load_paths'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:24:in `reload!'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:38:in `block in updater'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/file_update_checker.rb:83:in `execute'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/routes_reloader.rb:13:in `execute'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application/finisher.rb:158:in `block in <module:Finisher>'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:32:in `instance_exec'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:32:in `run'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:61:in `block in run_initializers'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/initializable.rb:60:in `run_initializers'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:372:in `initialize!'
+      01 /home/ubuntu/notebook/releases/20240503135334/config/environment.rb:5:in `<main>'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 <internal:/home/ubuntu/.rbenv/versions/3.2.2/lib/ruby/site_ruby/3.2.0/rubygems/core_ext/kernel_require.rb>:37:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/bootsnap-1.18.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/zeitwerk-2.6.13/lib/zeitwerk/kernel.rb:34:in `require'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:348:in `require_environment!'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/railties-7.0.8.1/lib/rails/application.rb:506:in `block in run_tasks_blocks'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+      01 /home/ubuntu/notebook/shared/bundle/ruby/3.2.0/gems/rake-13.2.1/exe/rake:27:in `<top (required)>'
+      01 /home/ubuntu/.rbenv/versions/3.2.2/bin/bundle:25:in `load'
+      01 /home/ubuntu/.rbenv/versions/3.2.2/bin/bundle:25:in `<main>'
+      01 Tasks: TOP => environment
+      01 (See full trace by running task with --trace)

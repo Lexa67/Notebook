@@ -1,18 +1,11 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # Общие параметры, например, хост, порт, могут быть указаны здесь,
-  # если они одинаковы для всех окружений.
-  # host: localhost
-  # port: 5432
 
 development:
   <<: *default
   database: notebook_development
-  # username и password могут быть не обязательными, если у PostgreSQL настроен аутентификация через операционную систему или другие механизмы.
-  # username: my_dev_user
-  # password: my_dev_password
 
 test:
   <<: *default
@@ -22,7 +15,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: notebook_production
-  username: <%= ENV["NOTEBOOK_DB_USER"] %> # Имя пользователя из переменной окружения
-  password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %> # Пароль из переменной окружения
-  host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %> # Хост может быть параметризован через переменную окружения, по умолчанию localhost
-  port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %> # Порт также можно указать через переменную окружения, с дефолтом в 5432
+  username: <%= ENV["NOTEBOOK_DB_USER"] %>
+  password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %>
+  host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %>
