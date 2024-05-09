@@ -8,7 +8,7 @@ button {
     display: flex;
     height: 70px;
     align-items: center;
-    background-image: linear-gradient(180deg, rgb(3, 134, 123) 2.03%, rgb(113, 201, 207) 38.46%, rgb(13, 138, 111) 90.36%);
+    /* background-image: linear-gradient(180deg, rgb(3, 134, 123) 2.03%, rgb(113, 201, 207) 38.46%, rgb(13, 138, 111) 90.36%); */
     color: rgb(73, 73, 73);
     font-size: 20px;
     text-decoration: none;
@@ -199,7 +199,8 @@ button {
 }
 
 .week-btn button {
-    width: 400px;
+    width: 270px;
+    height: 32px;
     color: aqua;
     border: 2px solid aqua;
     border-radius: 5px;

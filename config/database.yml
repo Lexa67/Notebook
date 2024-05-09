@@ -2,10 +2,14 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: ubuntu
+  password: <%= ENV['notebook_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
   database: notebook_development
+  host: localhost
+  port: 5432
 
 test:
   <<: *default

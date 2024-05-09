@@ -1,6 +1,7 @@
 .table-header {
     display: flex;
     flex-direction: column;
+    max-width: 768px;
     margin: auto;
     
     @media screen and (min-width: 768px) {
