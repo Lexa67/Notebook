@@ -20,6 +20,6 @@ production:
   encoding: unicode
   database: notebook_production
   username: ubuntu
-  password: 140099
+  password: <%= ENV['notebook_DATABASE_PASSWORD'] %>
   host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %>
   port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %>
