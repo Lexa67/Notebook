@@ -115,6 +115,9 @@ GEM
       responders
       warden (~> 1.2.3)
     dotenv (3.1.1)
+    dotenv-rails (3.1.1)
+      dotenv (= 3.1.1)
+      railties (>= 6.1)
     erubi (1.12.0)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
@@ -292,6 +295,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   dotenv
+  dotenv-rails
   font-awesome-rails
   importmap-rails
   jbuilder

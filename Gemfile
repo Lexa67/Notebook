@@ -46,6 +46,7 @@ gem 'capistrano-bundler'
 gem 'capistrano-rbenv'
 
 gem 'capistrano3-puma'
+gem 'dotenv-rails'
 
 
 
