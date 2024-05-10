@@ -9,8 +9,8 @@ development:
   adapter: postgresql
   encoding: unicode
   database: notebook_production
-  username: ubuntu
-  password: 140099
+  username: <%= ENV["NOTEBOOK_DB_USERNAME"] %>
+  password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %>
   host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %>
   port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %>
 
