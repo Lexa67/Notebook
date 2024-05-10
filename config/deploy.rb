@@ -22,7 +22,7 @@ set :branch, 'main'
 
 # Default value for :linked_files is []
 # set :linked_files, "config/database.yml", 'config/master.key'
-set :rails_env, 'development'
+set :rails_env, 'production'
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
