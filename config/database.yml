@@ -6,10 +6,13 @@ default: &default
   password: <%= ENV['notebook_DATABASE_PASSWORD'] %>
 
 development:
-  <<: *default
-  database: notebook_development
-  host: localhost
-  port: 5432
+  adapter: postgresql
+  encoding: unicode
+  database: notebook_production
+  username: <%= ENV["NOTEBOOK_DB_USER"] %>
+  password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %>
+  host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %>
 
 test:
   <<: *default
@@ -19,7 +22,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: notebook_production
-  username: ubuntu
-  password: <%= ENV['notebook_DATABASE_PASSWORD'] %>
+  username: <%= ENV["NOTEBOOK_DB_USER"] %>
+  password: <%= ENV["NOTEBOOK_DB_PASSWORD"] %>
   host: <%= ENV.fetch("NOTEBOOK_DB_HOST", "localhost") %>
   port: <%= ENV.fetch("NOTEBOOK_DB_PORT", 5432) %>

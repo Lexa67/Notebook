@@ -2,79 +2,79 @@
       rbenv: rbenv_ruby is not set; ruby version will be defined by the remote hosts via rbenv
 00:00 git:wrapper
       01 mkdir -p /tmp
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 1.563s
-      Uploading /tmp/git-ssh-11cc2f29f8c0210ab51f.sh 100.0%
-      02 chmod 700 /tmp/git-ssh-11cc2f29f8c0210ab51f.sh
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.227s
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 1.656s
+      Uploading /tmp/git-ssh-64e9bf68a156bea2b4ac.sh 100.0%
+      02 chmod 700 /tmp/git-ssh-64e9bf68a156bea2b4ac.sh
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.176s
 00:02 git:check
       01 git ls-remote https://github.com/Lexa67/Notebook.git HEAD
-      01 815a906445364051d2035c9bf9c64690a0f04dec	HEAD
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.582s
-00:03 deploy:check:directories
+      01 227784f69f38a7ffa7a5c9c199647bb1bec68aa9	HEAD
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.655s
+00:02 deploy:check:directories
       01 mkdir -p /home/ubuntu/notebook/shared /home/ubuntu/notebook/releases
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.235s
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.159s
 00:03 deploy:check:linked_dirs
       01 mkdir -p /home/ubuntu/notebook/shared/log /home/ubuntu/notebook/shared/tmp/pids /home/ubuntu/notebook/shared/tmp/cache /home/ubuntu/notebook/shared/tmp/sockets /home/ubuntu/notebook/shared/vendor/bundle /home/ubuntu/notebook/shared/public/system /home/ubuntu/notebook/shared/public/assets
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.217s
-00:04 git:clone
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+00:03 git:clone
       The repository mirror is at /home/ubuntu/notebook/repo
 00:04 git:update
       01 git remote set-url origin https://github.com/Lexa67/Notebook.git
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.225s
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.173s
       02 git remote update --prune
       02 Fetching origin
       02 From https://github.com/Lexa67/Notebook
-      02    5aee533..815a906  main       -> main
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.871s
+      02    815a906..227784f  main       -> main
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.814s
 00:05 git:create_release
-      01 mkdir -p /home/ubuntu/notebook/releases/20240509145926
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.236s
-      02 git archive main | /usr/bin/env tar -x -f - -C /home/ubuntu/notebook/releases/20240509145926
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.232s
-00:07 deploy:set_current_revision
-      01 echo "815a906445364051d2035c9bf9c64690a0f04dec" > REVISION
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.221s
-00:07 deploy:symlink:linked_dirs
-      01 mkdir -p /home/ubuntu/notebook/releases/20240509145926 /home/ubuntu/notebook/releases/20240509145926/tmp /home/ubuntu/notebook/releases/20240509145926/vendor /home/ubuntu/notebook/releases/20240509145926/public
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.219s
-      02 rm -rf /home/ubuntu/notebook/releases/20240509145926/log
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.231s
-      03 ln -s /home/ubuntu/notebook/shared/log /home/ubuntu/notebook/releases/20240509145926/log
-    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.233s
-      04 rm -rf /home/ubuntu/notebook/releases/20240509145926/tmp/pids
-    ✔ 04 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.219s
-      05 ln -s /home/ubuntu/notebook/shared/tmp/pids /home/ubuntu/notebook/releases/20240509145926/tmp/pids
-    ✔ 05 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.222s
-      06 ln -s /home/ubuntu/notebook/shared/tmp/cache /home/ubuntu/notebook/releases/20240509145926/tmp/cache
-    ✔ 06 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.219s
-      07 ln -s /home/ubuntu/notebook/shared/tmp/sockets /home/ubuntu/notebook/releases/20240509145926/tmp/sockets
-    ✔ 07 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.257s
-      08 ln -s /home/ubuntu/notebook/shared/vendor/bundle /home/ubuntu/notebook/releases/20240509145926/vendor/bundle
-    ✔ 08 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.246s
-      09 ln -s /home/ubuntu/notebook/shared/public/system /home/ubuntu/notebook/releases/20240509145926/public/system
-    ✔ 09 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.217s
-      10 ln -s /home/ubuntu/notebook/shared/public/assets /home/ubuntu/notebook/releases/20240509145926/public/assets
-    ✔ 10 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.228s
-00:13 bundler:config
+      01 mkdir -p /home/ubuntu/notebook/releases/20240510120835
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+      02 git archive main | /usr/bin/env tar -x -f - -C /home/ubuntu/notebook/releases/20240510120835
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.182s
+00:06 deploy:set_current_revision
+      01 echo "227784f69f38a7ffa7a5c9c199647bb1bec68aa9" > REVISION
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+00:06 deploy:symlink:linked_dirs
+      01 mkdir -p /home/ubuntu/notebook/releases/20240510120835 /home/ubuntu/notebook/releases/20240510120835/tmp /home/ubuntu/notebook/releases/20240510120835/vendor /home/ubuntu/notebook/releases/20240510120835/public
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+      02 rm -rf /home/ubuntu/notebook/releases/20240510120835/log
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.167s
+      03 ln -s /home/ubuntu/notebook/shared/log /home/ubuntu/notebook/releases/20240510120835/log
+    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.167s
+      04 rm -rf /home/ubuntu/notebook/releases/20240510120835/tmp/pids
+    ✔ 04 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+      05 ln -s /home/ubuntu/notebook/shared/tmp/pids /home/ubuntu/notebook/releases/20240510120835/tmp/pids
+    ✔ 05 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.170s
+      06 ln -s /home/ubuntu/notebook/shared/tmp/cache /home/ubuntu/notebook/releases/20240510120835/tmp/cache
+    ✔ 06 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.165s
+      07 ln -s /home/ubuntu/notebook/shared/tmp/sockets /home/ubuntu/notebook/releases/20240510120835/tmp/sockets
+    ✔ 07 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.160s
+      08 ln -s /home/ubuntu/notebook/shared/vendor/bundle /home/ubuntu/notebook/releases/20240510120835/vendor/bundle
+    ✔ 08 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.166s
+      09 ln -s /home/ubuntu/notebook/shared/public/system /home/ubuntu/notebook/releases/20240510120835/public/system
+    ✔ 09 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.162s
+      10 ln -s /home/ubuntu/notebook/shared/public/assets /home/ubuntu/notebook/releases/20240510120835/public/assets
+    ✔ 10 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.167s
+00:10 bundler:config
       01 $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.503s
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.364s
       02 $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/ubuntu/notebook/shared/bundle
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.421s
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.394s
       03 $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test
-    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.464s
-00:15 bundler:install
+    ✔ 03 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.378s
+00:12 bundler:install
       The Gemfile's dependencies are satisfied, skipping installation
-00:15 deploy:assets:precompile
+00:12 deploy:assets:precompile
       01 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 1.348s
-00:16 deploy:assets:backup_manifest
-      01 mkdir -p /home/ubuntu/notebook/releases/20240509145926/assets_manifest_backup
-    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.227s
-      02 cp /home/ubuntu/notebook/releases/20240509145926/public/assets/.sprockets-manifest-918039e70b0cd88a1a413c4fb18a37ea.json /home/ubuntu/notebook/releases/20240509145926/assets_manifest_backup
-    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.230s
-00:17 deploy:migrate
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 1.689s
+00:14 deploy:assets:backup_manifest
+      01 mkdir -p /home/ubuntu/notebook/releases/20240510120835/assets_manifest_backup
+    ✔ 01 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.162s
+      02 cp /home/ubuntu/notebook/releases/20240510120835/public/assets/.sprockets-manifest-918039e70b0cd88a1a413c4fb18a37ea.json /home/ubuntu/notebook/releases/20240510120835/assets_manifest_backup
+    ✔ 02 ubuntu@ec2-13-60-50-49.eu-north-1.compute.amazonaws.com 0.168s
+00:14 deploy:migrate
       [deploy:migrate] Run `rake db:migrate`
-00:18 deploy:migrating
+00:14 deploy:migrating
       01 $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate
       01 rake aborted!
       01 ActiveRecord::ConnectionNotEstablished: connection to server at "127.0.0.1", port 5432 failed: fe_sendauth: no password supplied (ActiveRecord::ConnectionNotEstablished)
