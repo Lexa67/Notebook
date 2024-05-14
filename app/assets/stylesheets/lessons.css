@@ -1,12 +1,68 @@
 .table-header {
     display: flex;
-    flex-direction: column;
-    max-width: 768px;
-    margin: auto;
-    
-    @media screen and (min-width: 768px) {
-        min-width: 1326px;    
-    }
+    margin-top: 10px;
+    background-color: black;
+    color: aqua;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 2;
+    padding: 0;
+    margin: 0 10px;
+    font-size: larger;
+}
+
+.table-container {
+    padding: 5px;
+}
+
+.table-under-container {
+    width: 100%;
+}
+
+.table-ul {
+    display: flex;
+    width: 100%;
+    padding-left: 35px;
+}
+
+.table-ul-2 {
+    display: flex;
+    width: 15%;
+    padding: 0;
+}
+
+.table-li-status, .table-li-date, .table-li-time, .table-li-student, .table-li-lesson-status, .table-li-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.table-li-status {
+    justify-content: start;
+    max-width: 50px;
+}
+
+.table-li-student {
+    width: 130px;
+}
+
+.table-li-time {
+    display: flex;
+    width: 150px;
+}
+
+.table-li-date {
+    width: auto;
+}
+
+.table-li-lesson-status {
+   width: 255px;
+   text-indent: 45px;
+}
+
+.table-li-options {
+    width: 100px;
 }
 
 .container {
@@ -14,7 +70,7 @@
 }
 
 .one-lesson-container {
-    margin: 20px;
+    margin: 20px 0;
 }
 
 .one-lesson-edit-destroy {
@@ -26,94 +82,7 @@
 
 .lesson-info {
     width: 100%;
-    
-    @media screen and (min-width: 768px) {
-        padding-left: 45px;
-    }
-}
-
-.table-ul {
-    display: flex;
-    margin-top: 10px;
-    background-color: black;
-    color: aqua;
-    border-radius: 5px;
-    height: 40px;
-    font-size: small;
-    line-height: 2;
-    padding: 0;
-    max-width: 768px;
-    width: 100%;
-
-    @media screen and (min-width: 768px) {
-        font-size: larger;
-        max-width: 100%;
-
-    }
-}
-
-.table-li-status, .table-li-date, .table-li-time, .table-li-student, .table-li-lesson-status, .table-li-options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-
-    @media screen and (min-width: 768px) {
-        position: relative;
-        flex-grow: 0;
-    }
-}
-
-.table-li-status{
-    display: none;
-    @media screen and (min-width: 768px) {
-        display: flex;
-        left: 30px;
-    }
-}
-
-.table-li-date {
-    left: 60px;
-    @media screen and (min-width: 768px) {
-        left: 90px;
-    }
-}
-
-.table-li-time {
-    display: none;
-    @media screen and (min-width: 768px) {
-        display: flex;
-        left: 230px;
-    }
-}
-
-.table-li-student {
-    left: 160px;
-    @media screen and (min-width: 768px) {
-        left: 405px;
-    }
-}
-
-.table-li-lesson-status {
-    left: 300px;
-    @media screen and (min-width: 768px) {
-        left: 640px;
-    }
-}
-
-.table-li-options {
-    left: 410px;
-    @media screen and (min-width: 768px) {
-        left: 790px;
-    }
-}
-
-.table-li:first-child{
-    width: 240px;
-}
-
-.table-li:last-child{
-    max-width: 141px;
+    padding-left: 45px;
 }
 
 .params-ul {
@@ -129,22 +98,13 @@
 }
 
 .params-li-date {
-    width: 140px;
-
-    @media screen and (min-width: 768px) {
-        width: auto;
-    }
+    width: auto;
 }
 
 .params-li-time {
-    display: none;
-
-    @media screen and (min-width: 768px) {
-        display: flex;
-        justify-content: space-around;
-        font-weight: 600;
-
-    }
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
 }
 
 .params-li-student {
@@ -162,6 +122,7 @@
     padding: 5px;
     border-radius: 10px;
     transition-duration: 0.3s;
+    margin: 0 15px;
 }
 
 .not-paid {
@@ -172,6 +133,7 @@
     border-radius: 10px;
     transition-duration: 0.3s;
     min-width: 715px;
+    margin: 0 15px;
 }
 
 .paid:hover, .not-paid:hover {
@@ -217,11 +179,7 @@
     background-color: black;
     color: aqua;
     border-radius: 10px;
-    width: 100%;
-
-    @media screen and (min-width: 768px) {
-        width: 880px;
-    }
+    width: 880px;
 }
 
 .homework-table-body {
@@ -229,12 +187,8 @@
     margin: 0 auto;
     justify-content: start;
     color: aqua;
-    width: 100%;
     background-color: rgba(189, 189, 189, 0.11);
-
-    @media screen and (min-width: 768px) {
-        width: 880px;
-    }
+    width: 880px;
 }
 
 .homework-date, .homework-header-homework{

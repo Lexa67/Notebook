@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     @lessons = @lessons.where(lesson_date: Date.parse(params[:start_date])..Date.parse(params[:end_date]).end_of_day) if params[:start_date].present? && params[:end_date].present?
     @lessons = @lessons.where(paid: params[:paid]) if params[:paid].present?
 
-    @lessons = @lessons.order(lesson_date: :desc)
+    @lessons = @lessons.order(:lesson_date)
 
     @lessons = @lessons.page(params[:page]).per(10)
     

@@ -18,17 +18,14 @@ body {
 }
 
 .header{
-    max-width: 768px;
-    @media screen and (min-width: 768px) {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        width: 100%;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        gap: 350px;
-    }
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    position: sticky;
+    background-image: linear-gradient(to top, rgb(10, 153, 141), rgb(0 255 220));
+    top: 0;
+    z-index: 1;
 }
 
 .header-menu {
@@ -36,12 +33,7 @@ body {
     justify-content: space-between;
     padding: 10px 20px 0 20px;
     border-bottom: 1px solid rgb(46 175 175);
-    
-    @media screen and (min-width: 768px) {
-        margin: auto;
-        min-width: 1326px;
-        justify-content: space-between;
-    }
+    margin: 10px;
 }
 
 .hero-title {
@@ -50,11 +42,6 @@ body {
     color: rgb(111, 224, 186);
     margin: auto;
     justify-content: center;
-    
-    @media screen and (min-width: 768px) {
-        min-width: 1326px;
-        margin: 0 0 5px 0;
-    }
 }
 
 .hero-title-log-in {
@@ -67,19 +54,13 @@ body {
 
 .total-prices {
     display: flex;
-    flex-direction: column;
     background-color: rgba(169, 169, 169, 0.411);
     border-radius: 5px;
     text-align: center;
-    /* width: 100%; */
-    
-    @media screen and (min-width: 768px) {
-        margin: 5px auto;
-        padding: 5px;
-        min-width: 1326px;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+    margin: 5px 15px;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .header-price {
@@ -94,15 +75,6 @@ body {
 .total-not-paid {
     font-size: 20px;
     color: red;
-}
-
-.container-for-phone {
-    max-width: 768px;
-    margin: auto;
-    @media screen and (min-width: 768px) {
-        max-width: 1326px;
-    }
-    
 }
 
 

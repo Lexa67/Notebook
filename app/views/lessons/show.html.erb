@@ -4,19 +4,26 @@
 
 <% if @lessons.present? %>
   <h2 class="hero-title" >List of lessons by date</h2>
-<div class="table-header">
-  <ul class="table-ul">
-    <li class="table-li-status" title="The status of the lesson that was completed. If there is no icon, then the lesson has not been completed yet.">Status</li>
-    <li class="table-li-date">Date</li>
-    <li class="table-li-time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" style="
-      margin-right: 20px;"><rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#c93927"></rect><path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path><path fill="#fff" d="M14 10H18V22H14z"></path><path transform="rotate(90 16 16)" fill="#fff" d="M14 10H18V22H14z"></path></svg>
-      Time
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" style="
-      margin-left: 20px;"><path d="M31,8c0-2.209-1.791-4-4-4H5c-2.209,0-4,1.791-4,4v9H31V8Z" fill="#2455b2"></path><path d="M5,28H27c2.209,0,4-1.791,4-4v-8H1v8c0,2.209,1.791,4,4,4Z" fill="#f9da49"></path><path d="M5,28H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4ZM2,8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path></svg></li>
-    <li class="table-li-student">Student</li>
-    <li class="table-li-lesson-status">Lesson status</li>
-    <li class="table-li-options">Options</li>
-  </ul>
+  <div class="table-container">
+    <div class="table-under-container">
+      <div class="table-header">
+        <ul class="table-ul">
+          <li class="table-li-status" title="The status of the lesson that was completed. If there is no icon, then the lesson has not been completed yet.">Status</li>
+          <li class="table-li-student">Student</li>
+          <li class="table-li-time"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" style="
+            margin-right: 20px;"><rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#c93927"></rect><path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path><path fill="#fff" d="M14 10H18V22H14z"></path><path transform="rotate(90 16 16)" fill="#fff" d="M14 10H18V22H14z"></path></svg>
+            Time
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" style="
+            margin-left: 20px;"><path d="M31,8c0-2.209-1.791-4-4-4H5c-2.209,0-4,1.791-4,4v9H31V8Z" fill="#2455b2"></path><path d="M5,28H27c2.209,0,4-1.791,4-4v-8H1v8c0,2.209,1.791,4,4,4Z" fill="#f9da49"></path><path d="M5,28H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4ZM2,8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path></svg></li>
+            <li class="table-li-date">Date</li>
+          <li class="table-li-lesson-status">Lesson status</li>
+        </ul>
+        <ul class="table-ul-2">
+          <li class="table-li-options">Options</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <% @lessons.each do |lesson| %>
     <% if lesson.paid %>
       <div class="paid">
@@ -54,7 +61,6 @@
       </div>
       <div class="homework-btn">
         <%= link_to "Show all homeworks", homework_lesson_path(student_id: @lesson.student.id), class:"show-all-homeworks-button" %>
-
       </div>
     </div>
   <% end %>

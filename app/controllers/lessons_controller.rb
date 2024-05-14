@@ -78,7 +78,7 @@ class LessonsController < ApplicationController
   end
 
   def homework
-    @lessons = Lesson.where(student_id: params[:student_id]).order(lesson_date: :desc)
+    @lessons = Lesson.where(student_id: params[:student_id]).order(:lesson_date)
     @lessons = @lessons.page(params[:page]).per(10)
   end
 
@@ -86,7 +86,7 @@ class LessonsController < ApplicationController
   
   def set_lesson
     if params[:id] == "by_date"
-      @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date]).order(lesson_date: :desc)
+      @lessons = Lesson.where("DATE(lesson_date) = ?", params[:date]).order(:lesson_date)
     else
       @lesson = Lesson.find(params[:id])
     end
